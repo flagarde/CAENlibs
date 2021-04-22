@@ -1,4 +1,4 @@
-project(CAENVME VERSION 1.4.1 DESCRIPTION "CAEN Comm Library" HOMEPAGE_URL "https://www.caen.it/products/caencomm-library/" LANGUAGES NONE)
+project(CAENComm VERSION 1.4.1 DESCRIPTION "CAEN Comm Library" HOMEPAGE_URL "https://www.caen.it/products/caencomm-library/" LANGUAGES NONE)
 
 if(WIN32)
   set(LIBRARY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib/Windows/${ARCH}")
