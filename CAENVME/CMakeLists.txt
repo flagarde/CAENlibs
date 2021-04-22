@@ -2,10 +2,8 @@ project(CAENVME VERSION 3.2.0 DESCRIPTION "CAEN VME library" HOMEPAGE_URL "https
 
 if(WIN32)
   set(LIBRARY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib/Windows/${ARCH}")
-  set(OUTPUT_DEFINITIONS WIN32)
 else()
   set(LIBRARY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib/Unix/${ARCH}")
-  set(OUTPUT_DEFINITIONS LINUX)
 endif()
 
 add_custom_target(COPY_CAENVME)
@@ -30,13 +28,6 @@ else()
   target_link_libraries(__CAENVME INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/libCAENVME.so")
 endif()
 set_target_properties(__CAENVME PROPERTIES PUBLIC_HEADER "include/CAENVMEoslib.h;include/CAENVMEtypes.h;include/CAENVMElib.h")
-target_compile_definitions(__CAENVME INTERFACE ${OUTPUT_DEFINITIONS})
 install(TARGETS __CAENVME)
 
 add_library(CAENVME::CAENVME ALIAS __CAENVME)
-
-
-
-
-
-
