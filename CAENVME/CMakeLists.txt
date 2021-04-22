@@ -28,6 +28,6 @@ else()
   target_link_libraries(__CAENVME INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/libCAENVME.so")
 endif()
 set_target_properties(__CAENVME PROPERTIES PUBLIC_HEADER "include/CAENVMEoslib.h;include/CAENVMEtypes.h;include/CAENVMElib.h")
-install(TARGETS __CAENVME)
+install(TARGETS __CAENVME  PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/CAEN")
 
 add_library(CAENVME::CAENVME ALIAS __CAENVME)

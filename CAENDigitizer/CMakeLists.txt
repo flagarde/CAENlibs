@@ -27,6 +27,6 @@ else()
   target_link_libraries(__CAENDigitizer INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/libCAENDigitizer.so" INTERFACE CAENComm::CAENComm)
 endif()
 set_target_properties(__CAENDigitizer PROPERTIES PUBLIC_HEADER "include/CAENDigitizerType.h;include/CAENDigitizer.h")
-install(TARGETS __CAENDigitizer)
+install(TARGETS __CAENDigitizer PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/CAEN")
 
 add_library(CAENDigitizer::CAENDigitizer ALIAS __CAENDigitizer)

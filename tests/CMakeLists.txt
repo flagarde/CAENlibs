@@ -9,3 +9,11 @@ install(TARGETS CAENComm)
 add_executable(CAENDigitizer CAENDigitizer.cpp)
 target_link_libraries(CAENDigitizer PRIVATE CAENDigitizer::CAENDigitizer)
 install(TARGETS CAENDigitizer)
+
+add_executable(CAENHV CAENHV.cpp)
+target_link_libraries(CAENHV PRIVATE CAENHV::CAENHV)
+install(TARGETS CAENHV)
+
+add_executable(CAENDPP CAENDPP.cpp)
+target_link_libraries(CAENDPP PRIVATE CAENDPP::CAENDPP)
+install(TARGETS CAENDPP)
