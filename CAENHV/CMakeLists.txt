@@ -23,19 +23,19 @@ else()
                      BYPRODUCTS "${CMAKE_INSTALL_FULL_LIBDIR}/libcaenhvwrapper.so")
 endif()
 
-add_library(__CAENHV INTERFACE)
-add_dependencies(__CAENHV COPY_CAENHV)
-target_include_directories(__CAENHV INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> INTERFACE $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/CAEN>)
+add_library(CAENHV INTERFACE)
+add_dependencies(CAENHV COPY_CAENHV)
+target_include_directories(CAENHV INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> INTERFACE $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/CAEN>)
 if(WIN32)
-  target_link_libraries(__CAENHV INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/CAENHVWrapper.lib" INTERFACE CAENComm::CAENComm)
+  target_link_libraries(CAENHV INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/CAENHVWrapper.lib" INTERFACE CAENComm::CAENComm)
 else()
-  target_compile_definitions(__CAENHV INTERFACE "UNIX")
-  target_link_libraries(__CAENHV INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/libcaenhvwrapper.so" INTERFACE CAENComm::CAENComm)
+  target_compile_definitions(CAENHV INTERFACE "UNIX")
+  target_link_libraries(CAENHV INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/libcaenhvwrapper.so" INTERFACE CAENComm::CAENComm)
 endif()
-set_target_properties(__CAENHV PROPERTIES PUBLIC_HEADER "include/CAENHVWrapper.h")
-add_library(CAENHV::CAENHV ALIAS __CAENHV)
+set_target_properties(CAENHV PROPERTIES PUBLIC_HEADER "include/CAENHVWrapper.h")
+add_library(CAENHV::CAENHV ALIAS CAENHV)
 
-install(TARGETS __CAENHV EXPORT CAENHVTargets PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/CAEN")
+install(TARGETS CAENHV EXPORT CAENHVTargets PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/CAEN")
 install(EXPORT CAENHVTargets
         FILE CAENHVTargets.cmake
         NAMESPACE CAENHV::

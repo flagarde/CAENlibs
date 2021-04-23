@@ -18,18 +18,18 @@ else()
                      BYPRODUCTS "${CMAKE_INSTALL_FULL_LIBDIR}/libCAENDigitizer.so")
 endif()
 
-add_library(__CAENDigitizer INTERFACE)
-add_dependencies(__CAENDigitizer COPY_CAENDigitizer)
-target_include_directories(__CAENDigitizer INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> INTERFACE $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/CAEN>)
+add_library(CAENDigitizer INTERFACE)
+add_dependencies(CAENDigitizer COPY_CAENDigitizer)
+target_include_directories(CAENDigitizer INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> INTERFACE $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/CAEN>)
 if(WIN32)
-  target_link_libraries(__CAENDigitizer INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/CAENDigitizer.lib" INTERFACE CAENComm::CAENComm)
+  target_link_libraries(CAENDigitizer INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/CAENDigitizer.lib" INTERFACE CAENComm::CAENComm)
 else()
-  target_link_libraries(__CAENDigitizer INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/libCAENDigitizer.so" INTERFACE CAENComm::CAENComm)
+  target_link_libraries(CAENDigitizer INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/libCAENDigitizer.so" INTERFACE CAENComm::CAENComm)
 endif()
-set_target_properties(__CAENDigitizer PROPERTIES PUBLIC_HEADER "include/CAENDigitizerType.h;include/CAENDigitizer.h")
-add_library(CAENDigitizer::CAENDigitizer ALIAS __CAENDigitizer)
+set_target_properties(CAENDigitizer PROPERTIES PUBLIC_HEADER "include/CAENDigitizerType.h;include/CAENDigitizer.h")
+add_library(CAENDigitizer::CAENDigitizer ALIAS CAENDigitizer)
 
-install(TARGETS __CAENDigitizer EXPORT CAENDigitizerTargets PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/CAEN")
+install(TARGETS CAENDigitizer EXPORT CAENDigitizerTargets PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/CAEN")
 install(EXPORT CAENDigitizerTargets
         FILE CAENDigitizerTargets.cmake
         NAMESPACE CAENDigitizer::
