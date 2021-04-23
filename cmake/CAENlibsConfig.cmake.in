@@ -1,0 +1,9 @@
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/CAENVMETargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/CAENCommTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/CAENHVTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/CAENDigitizerTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/CAENDPPTargets.cmake")
+
+check_required_components(CAENlibs)
