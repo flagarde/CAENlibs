@@ -110,7 +110,7 @@ jobs:
       shell: pwsh
 
     - name: Configure
-      run: cmake -S . -G Ninja -B build -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -D CMAKE_C_COMPILER_LAUNCHER=buildcache -D CMAKE_CXX_COMPILER_LAUNCHER=buildcache
+      run: cmake -S . -G Ninja -B build -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -D CMAKE_C_COMPILER_LAUNCHER=buildcache -D CMAKE_CXX_COMPILER_LAUNCHER=buildcache -DCMAKE_INSTALL_PREFIX=../bin
       shell: cmd
 
     - name: Build
