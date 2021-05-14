@@ -11,7 +11,7 @@ on:
 env:
   CMAKE_VERSION: 3.16.x
   NINJA_VERSION: 1.10.2
-  BUILD_TYPE: Release
+  BUILD_TYPE: Debug
   CC: cl
   CXX: cl
   artifact: "Windows-MSVC.tar.xz"
@@ -116,14 +116,14 @@ jobs:
     - name: Build
       run: cmake --build build --config ${{ env.BUILD_TYPE }} --parallel 2
       shell: cmd
-
+      
+    - name: Install Strip
+      run: cmake --install build --prefix instdir --strip
+      shell: cmd
+      
     - name: Run tests
       working-directory: ${{ github.workspace }}/build
       run: ctest -C ${{ env.BUILD_TYPE }} -j2 -VV --output-on-failure
-      shell: cmd
-
-    - name: Install Strip
-      run: cmake --install build --prefix instdir --strip
       shell: cmd
 
   release:
