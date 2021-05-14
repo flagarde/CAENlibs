@@ -17,6 +17,7 @@ if(WIN32 OR MSYS)
   file(MAKE_DIRECTORY "${CMAKE_INSTALL_FULL_LIBDIR}")
   add_custom_command(TARGET COPY_CAENHV 
                      COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENHVWrapper.lib" "${CMAKE_INSTALL_FULL_LIBDIR}/CAENHVWrapper.lib" 
+                    COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENHVWrapper.dll" "${CMAKE_INSTALL_FULL_BINDIR}/CAENHVWrapper.dll" 
                      BYPRODUCTS "${CMAKE_INSTALL_FULL_LIBDIR}/CAENHVWrapper.lib")
 else()
   add_custom_command(TARGET COPY_CAENHV 
