@@ -1,13 +1,13 @@
 project(CAENVME VERSION 3.2.0 DESCRIPTION "CAEN VME library" HOMEPAGE_URL "https://www.caen.it/products/caenvmelib-library/" LANGUAGES NONE)
 
-if(WIN32)
+if(WIN32 OR MSYS)
   set(LIBRARY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib/Windows/${ARCH}")
 else()
   set(LIBRARY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib/Unix/${ARCH}")
 endif()
 
 add_custom_target(COPY_CAENVME)
-if(WIN32)
+if(WIN32 OR MSYS)
   add_custom_command(TARGET COPY_CAENVME 
                      COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENVMELib.lib" "${CMAKE_INSTALL_FULL_LIBDIR}/CAENVMELib.lib" 
                      COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENVMElib.dll" "${CMAKE_INSTALL_FULL_BINDIR}/CAENVMElib.dll"
@@ -25,7 +25,7 @@ find_package(Threads REQUIRED QUIET)
 add_library(CAENVME INTERFACE)
 add_dependencies(CAENVME COPY_CAENVME)
 target_include_directories(CAENVME INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> INTERFACE $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/CAEN>)
-if(WIN32)
+if(WIN32 OR MSYS)
   target_link_libraries(CAENVME INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/CAENVMELib.lib" INTERFACE Threads::Threads)
 else()
   target_link_libraries(CAENVME INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/libCAENVME.so" INTERFACE Threads::Threads)
