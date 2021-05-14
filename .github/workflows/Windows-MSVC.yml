@@ -110,7 +110,7 @@ jobs:
       shell: pwsh
 
     - name: Configure
-      run: cmake -S . -G Ninja -B build -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -D CMAKE_C_COMPILER_LAUNCHER=buildcache -D CMAKE_CXX_COMPILER_LAUNCHER=buildcache -DCMAKE_INSTALL_PREFIX=../bin
+      run: cmake -S . -B build -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DCMAKE_INSTALL_PREFIX=../bin
       shell: cmd
 
     - name: Build
@@ -122,7 +122,6 @@ jobs:
       shell: cmd
       
     - name: Run tests
-      working-directory: ${{ github.workspace }}/build
       run: ctest -C ${{ env.BUILD_TYPE }} -j2 -VV --output-on-failure
       shell: cmd
 
