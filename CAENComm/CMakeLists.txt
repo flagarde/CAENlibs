@@ -8,6 +8,7 @@ endif()
 
 add_custom_target(COPY_CAENComm)
 if(WIN32 OR MSYS)
+  file(MAKE_DIRECTORY "${CMAKE_INSTALL_FULL_LIBDIR}")
   add_custom_command(TARGET COPY_CAENComm 
                      COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENComm.lib" "${CMAKE_INSTALL_FULL_LIBDIR}/CAENComm.lib" 
                      COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENComm.dll" "${CMAKE_INSTALL_FULL_BINDIR}/CAENComm.dll"

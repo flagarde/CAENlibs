@@ -8,6 +8,7 @@ endif()
 
 add_custom_target(COPY_CAENVME)
 if(WIN32 OR MSYS)
+  file(MAKE_DIRECTORY "${CMAKE_INSTALL_FULL_LIBDIR}")
   add_custom_command(TARGET COPY_CAENVME 
                      COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENVMELib.lib" "${CMAKE_INSTALL_FULL_LIBDIR}/CAENVMELib.lib" 
                      COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENVMElib.dll" "${CMAKE_INSTALL_FULL_BINDIR}/CAENVMElib.dll"

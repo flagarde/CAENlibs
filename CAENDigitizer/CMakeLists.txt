@@ -8,6 +8,7 @@ endif()
 
 add_custom_target(COPY_CAENDigitizer)
 if(WIN32 OR MSYS)
+  file(MAKE_DIRECTORY "${CMAKE_INSTALL_FULL_LIBDIR}")
   add_custom_command(TARGET COPY_CAENDigitizer 
                      COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENDigitizer.lib" "${CMAKE_INSTALL_FULL_LIBDIR}/CAENDigitizer.lib" 
                      COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENDigitizer.dll" "${CMAKE_INSTALL_FULL_BINDIR}/CAENDigitizer.dll"
