@@ -1,13 +1,13 @@
 project(CAENComm VERSION 1.4.1 DESCRIPTION "CAEN Comm Library" HOMEPAGE_URL "https://www.caen.it/products/caencomm-library/" LANGUAGES NONE)
 
-if(WIN32)
+if(WIN32 OR MSYS)
   set(LIBRARY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib/Windows/${ARCH}")
 else()
   set(LIBRARY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib/Unix/${ARCH}")
 endif()
 
 add_custom_target(COPY_CAENComm)
-if(WIN32)
+if(WIN32 OR MSYS)
   add_custom_command(TARGET COPY_CAENComm 
                      COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENComm.lib" "${CMAKE_INSTALL_FULL_LIBDIR}/CAENComm.lib" 
                      COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENComm.dll" "${CMAKE_INSTALL_FULL_BINDIR}/CAENComm.dll"
@@ -21,7 +21,7 @@ endif()
 add_library(CAENComm INTERFACE)
 add_dependencies(CAENComm COPY_CAENComm)
 target_include_directories(CAENComm INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> INTERFACE $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/CAEN>)
-if(WIN32)
+if(WIN32 OR MSYS)
   target_link_libraries(CAENComm INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/CAENComm.lib" INTERFACE CAENVME::CAENVME)
 else()
   target_link_libraries(CAENComm INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/libCAENComm.so" INTERFACE CAENVME::CAENVME)
