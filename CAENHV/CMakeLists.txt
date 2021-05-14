@@ -1,4 +1,4 @@
-if(WIN32)
+if(WIN32 OR MSYS)
   set(CAENHV_VERSION "6.0")
 else()
   set(CAENHV_VERSION "6.04")
@@ -6,14 +6,14 @@ endif()
 
 project(CAENHV VERSION ${CAENHV_VERSION} DESCRIPTION "CAEN HV Wrapper Library" HOMEPAGE_URL "https://www.caen.it/products/caen-hv-wrapper-library/" LANGUAGES NONE)
 
-if(WIN32)
+if(WIN32 OR MSYS)
   set(LIBRARY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib/Windows/${ARCH}")
 else()
   set(LIBRARY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib/Unix/${ARCH}")
 endif()
 
 add_custom_target(COPY_CAENHV)
-if(WIN32)
+if(WIN32 OR MSYS)
   add_custom_command(TARGET COPY_CAENHV 
                      COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENHVWrapper.lib" "${CMAKE_INSTALL_FULL_LIBDIR}/CAENHVWrapper.lib" 
                      BYPRODUCTS "${CMAKE_INSTALL_FULL_LIBDIR}/CAENHVWrapper.lib")
@@ -26,7 +26,7 @@ endif()
 add_library(CAENHV INTERFACE)
 add_dependencies(CAENHV COPY_CAENHV)
 target_include_directories(CAENHV INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> INTERFACE $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/CAEN>)
-if(WIN32)
+if(WIN32 OR MSYS)
   target_link_libraries(CAENHV INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/CAENHVWrapper.lib" INTERFACE CAENComm::CAENComm)
 else()
   target_compile_definitions(CAENHV INTERFACE "UNIX")
