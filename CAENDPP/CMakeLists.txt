@@ -1,4 +1,4 @@
-if(WIN32)
+if(WIN32 OR MSYS)
   set(CAENDPP_VERSION "1.9.1")
 else()
   set(CAENDPP_VERSION "1.7.2")
@@ -6,14 +6,14 @@ endif()
 
 project(CAENDPP VERSION ${CAENDPP_VERSION} DESCRIPTION "CAEN DPP Library" HOMEPAGE_URL "https://www.caen.it/products/caendpp-library/" LANGUAGES NONE)
 
-if(WIN32)
+if(WIN32 OR MSYS)
   set(LIBRARY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib/Windows/${ARCH}")
 else()
   set(LIBRARY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/lib/Unix/${ARCH}")
 endif()
 
 add_custom_target(COPY_CAENDPP)
-if(WIN32)
+if(WIN32 OR MSYS)
   add_custom_command(TARGET COPY_CAENDPP 
                      COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENDPPLib.lib" "${CMAKE_INSTALL_FULL_LIBDIR}/CAENDPPLib.lib" 
                      BYPRODUCTS "${CMAKE_INSTALL_FULL_LIBDIR}/CAENDPPLib.lib")
@@ -26,7 +26,7 @@ endif()
 add_library(CAENDPP INTERFACE)
 add_dependencies(CAENDPP COPY_CAENDPP)
 target_include_directories(CAENDPP INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> INTERFACE $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/CAEN>)
-if(WIN32)
+if(WIN32 OR MSYS)
   target_link_libraries(CAENDPP INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/CAENDPPLib.lib" INTERFACE CAENComm::CAENComm)
 else()
   target_compile_definitions(CAENDPP INTERFACE "UNIX")
