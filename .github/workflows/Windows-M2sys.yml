@@ -63,6 +63,7 @@ jobs:
     - name: Install msys2
       uses: msys2/setup-msys2@v2
       with:
+        msystem: MSYS
         path-type: minimal
         release: true
         update: true
