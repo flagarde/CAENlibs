@@ -11,7 +11,7 @@ on:
 env:
   CMAKE_VERSION: 3.16.x
   NINJA_VERSION: 1.10.2
-  BUILD_TYPE: Release
+  BUILD_TYPE: Debug
   CC: cl
   CXX: cl
   artifact: "Windows-MSVC.tar.xz"
