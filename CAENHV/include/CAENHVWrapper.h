@@ -48,11 +48,13 @@ extern void Sleep(unsigned int x);
 #ifndef uchar 
 #define uchar unsigned char
 #endif
-#ifndef ushort 
-#define ushort unsigned short
-#endif
-#ifndef ulong
-#define ulong unsigned int
+#ifndef MSYS
+  #ifndef ushort 
+  #define ushort unsigned short
+  #endif
+  #ifndef ulong
+  #define ulong unsigned int
+  #endif
 #endif
 
 
@@ -359,12 +361,13 @@ CAENHVLIB_API CAENHVRESULT CAENHV_UnSubscribeChannelParams(int handle, short Por
 
 CAENHVLIB_API char *CAENHV_GetError(int handle);
 
-#ifdef WIN32
+#ifdef MSYS or LINUX
+CAENHVLIB_API CAENHVRESULT CAENHV_GetEventData(int sck, CAENHV_SYSTEMSTATUS_t *SysStatus, 
+                                               CAENHVEVENT_TYPE_t **EventData, unsigned int *DataNumber);
+#elif WIN32
 CAENHVLIB_API CAENHVRESULT CAENHV_GetEventData(SOCKET sck, CAENHV_SYSTEMSTATUS_t *SysStatus, 
 												CAENHVEVENT_TYPE_t **EventData, unsigned int *DataNumber);
-#else
-CAENHVLIB_API CAENHVRESULT CAENHV_GetEventData(int sck, CAENHV_SYSTEMSTATUS_t *SysStatus, 
-												CAENHVEVENT_TYPE_t **EventData, unsigned int *DataNumber);
+
 #endif
 
 CAENHVLIB_API CAENHVRESULT CAENHV_FreeEventData(CAENHVEVENT_TYPE_t **ListOfItemsData);
