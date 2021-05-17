@@ -43,6 +43,7 @@ jobs:
       run: ctest -C ${{ env.BUILD_TYPE }} -VV --output-on-failure
     
     - name: Install Strip
+      working-directory: ${{ github.workspace }}
       run: sudo cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.BUILD_TYPE }} --strip
 
   release:

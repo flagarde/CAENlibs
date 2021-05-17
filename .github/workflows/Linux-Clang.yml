@@ -42,6 +42,7 @@ jobs:
       run: sudo cmake --build ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.BUILD_TYPE }} --parallel 2
 
     - name: Run tests
+      working-directory: ${{ github.workspace }}
       run: ctest -C ${{ env.BUILD_TYPE }} -VV --output-on-failure
     
     - name: Install Strip
