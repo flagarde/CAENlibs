@@ -26,7 +26,7 @@ else()
 endif()
 
 add_library(CAENHV INTERFACE)
-add_dependencies(CAENHV COPY_CAENHV)
+add_dependencies(CAENHV COPY_CAENHV CAENComm::CAENComm)
 target_include_directories(CAENHV INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> INTERFACE $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/CAEN>)
 if(WIN32 OR MSYS)
   if(MSYS)

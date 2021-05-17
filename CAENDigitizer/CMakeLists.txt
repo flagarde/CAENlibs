@@ -20,7 +20,7 @@ else()
 endif()
 
 add_library(CAENDigitizer INTERFACE)
-add_dependencies(CAENDigitizer COPY_CAENDigitizer)
+add_dependencies(CAENDigitizer COPY_CAENDigitizer CAENComm::CAENComm)
 target_include_directories(CAENDigitizer INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> INTERFACE $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/CAEN>)
 if(WIN32 OR MSYS)
   target_link_libraries(CAENDigitizer INTERFACE "${CMAKE_INSTALL_FULL_LIBDIR}/CAENDigitizer.lib" INTERFACE CAENComm::CAENComm)
