@@ -51,7 +51,7 @@ jobs:
       shell: cmd
     
     - name: Install Strip
-      run: sudo cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.BUILD_TYPE }} --strip
+      run: cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.BUILD_TYPE }} --strip
       shell: cmd
 
   release:

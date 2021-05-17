@@ -39,6 +39,11 @@ jobs:
         update: true
         install: git mingw-w64-x86_64-toolchain ccache ninja cmake gcc make llvm python
 
+    - name: Install cmake
+      uses: jwlawson/actions-setup-cmake@v1.9
+      with:
+        cmake-version: '${{env.CMAKE_VERSION}}'
+        
     - name: Configure
       working-directory: ${{ github.workspace }}
       run: cmake -S ${{ github.workspace }} -B ${{ env.CMAKE_BUILD_PREFIX }} -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DCMAKE_INSTALL_PREFIX=${{ env.CMAKE_INSTALL_PREFIX }}
