@@ -45,7 +45,7 @@ jobs:
       run: ctest -C ${{ env.BUILD_TYPE }} -VV --output-on-failure
     
     - name: Install Strip
-      run: cmake --config ${{ env.BUILD_TYPE }} --install ${{ env.CMAKE_BUILD_PREFIX }} --strip
+      run: cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.BUILD_TYPE }} --strip
       
   release:
     name: "Release"

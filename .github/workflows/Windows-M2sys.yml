@@ -44,13 +44,13 @@ jobs:
       run: cmake -S ${{ github.workspace }} -B ${{ env.CMAKE_BUILD_PREFIX }} -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DCMAKE_INSTALL_PREFIX=${{ env.CMAKE_INSTALL_PREFIX }}
 
     - name: Build
-      run: cmake --build build --config ${{ env.BUILD_TYPE }} --parallel 2
+      run: cmake --build ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.BUILD_TYPE }} --parallel 2
 
     - name: Run tests
       run: ctest -C ${{ env.BUILD_TYPE }} -VV --output-on-failure
     
     - name: Install Strip
-      run: cmake --config ${{ env.BUILD_TYPE }} --install ${{ env.CMAKE_BUILD_PREFIX }} --strip
+      run: cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.BUILD_TYPE }} --strip
 
   release:
     name: "Release"
