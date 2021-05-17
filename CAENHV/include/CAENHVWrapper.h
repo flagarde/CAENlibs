@@ -45,19 +45,6 @@ extern void Sleep(unsigned int x);
 #define HV_DEPRECATED(func) func
 #endif
 
-#ifndef uchar 
-#define uchar unsigned char
-#endif
-
-#ifndef __MINGW32__
-  #ifndef ushort 
-  #define ushort unsigned short
-  #endif
-  #ifndef ulong
-  #define ulong unsigned int
-  #endif
-#endif
-
 
 #define MAX_CH_NAME                12
  
@@ -286,11 +273,11 @@ CAENHVLIB_API CAENHVRESULT CAENHV_InitSystem(CAENHV_SYSTEM_TYPE_t system, int Li
 CAENHVLIB_API CAENHVRESULT  CAENHV_DeinitSystem(int handle);
 
 CAENHVLIB_API CAENHVRESULT CAENHV_GetCrateMap(int handle,	
- ushort *NrOfSlot, ushort **NrofChList, char **ModelList, char **DescriptionList,
- ushort **SerNumList, uchar **FmwRelMinList, uchar **FmwRelMaxList);
+ unsigned short *NrOfSlot, unsigned short **NrofChList, char **ModelList, char **DescriptionList,
+ unsigned short **SerNumList, unsigned char **FmwRelMinList, unsigned char **FmwRelMaxList);
  
 CAENHVLIB_API CAENHVRESULT  CAENHV_GetSysPropList(int handle, 
- ushort *NumProp, char **PropNameList);
+ unsigned short *NumProp, char **PropNameList);
  
 CAENHVLIB_API CAENHVRESULT  CAENHV_GetSysPropInfo(int handle, 
  const char *PropName, unsigned *PropMode, unsigned *PropType);
@@ -302,41 +289,41 @@ CAENHVLIB_API CAENHVRESULT  CAENHV_SetSysProp(int handle,
  const char	*PropName, void *Set); 
 
 CAENHVLIB_API CAENHVRESULT  CAENHV_GetBdParam(int handle, 
- ushort slotNum, const ushort *slotList, const char *ParName, void *ParValList);
+ unsigned short slotNum, const unsigned short *slotList, const char *ParName, void *ParValList);
  
 CAENHVLIB_API CAENHVRESULT  CAENHV_SetBdParam(int handle, 
- ushort slotNum, const ushort *slotList, const char *ParName, void *ParValue);
+ unsigned short slotNum, const unsigned short *slotList, const char *ParName, void *ParValue);
  
 CAENHVLIB_API CAENHVRESULT  CAENHV_GetBdParamProp(int handle, 
- ushort slot, const char *ParName, const char *PropName, void *retval);
+ unsigned short slot, const char *ParName, const char *PropName, void *retval);
 
 CAENHVLIB_API CAENHVRESULT  CAENHV_GetBdParamInfo(int handle, 
- ushort slot, char **ParNameList);
+ unsigned short slot, char **ParNameList);
 
 CAENHVLIB_API CAENHVRESULT  CAENHV_TestBdPresence(int handle, 
- ushort slot, ushort *NrofCh, char **Model, char **Description, ushort *SerNum, 
- uchar *FmwRelMin, uchar *FmwRelMax);
+ unsigned short slot, unsigned short *NrofCh, char **Model, char **Description, unsigned short *SerNum, 
+ unsigned char *FmwRelMin, unsigned char *FmwRelMax);
  
 CAENHVLIB_API CAENHVRESULT  CAENHV_GetChParamProp(int handle, 
- ushort slot, ushort Ch, const char *ParName, const char *PropName, void *retval);
+ unsigned short slot, unsigned short Ch, const char *ParName, const char *PropName, void *retval);
  
-CAENHVLIB_API CAENHVRESULT CAENHV_GetChParamInfo(int handle, ushort slot, ushort Ch, 
+CAENHVLIB_API CAENHVRESULT CAENHV_GetChParamInfo(int handle, unsigned short slot, unsigned short Ch, 
 												char **ParNameList, int *ParNumber);
 
-CAENHVLIB_API CAENHVRESULT  CAENHV_GetChName(int handle, ushort slot, 
- ushort ChNum, const ushort *ChList, char (*ChNameList)[MAX_CH_NAME]);
+CAENHVLIB_API CAENHVRESULT  CAENHV_GetChName(int handle, unsigned short slot, 
+ unsigned short ChNum, const unsigned short *ChList, char (*ChNameList)[MAX_CH_NAME]);
 
-CAENHVLIB_API CAENHVRESULT  CAENHV_SetChName(int handle, ushort slot, 
- ushort ChNum, const ushort *ChList, const char *ChName);
+CAENHVLIB_API CAENHVRESULT  CAENHV_SetChName(int handle, unsigned short slot, 
+ unsigned short ChNum, const unsigned short *ChList, const char *ChName);
 
-CAENHVLIB_API CAENHVRESULT  CAENHV_GetChParam(int handle, ushort slot, 
- const char *ParName, ushort ChNum, const ushort *ChList, void *ParValList);
+CAENHVLIB_API CAENHVRESULT  CAENHV_GetChParam(int handle, unsigned short slot, 
+ const char *ParName, unsigned short ChNum, const unsigned short *ChList, void *ParValList);
  
-CAENHVLIB_API CAENHVRESULT  CAENHV_SetChParam(int handle, ushort slot, 
- const char *ParName, ushort ChNum, const ushort *ChList, void *ParValue);
+CAENHVLIB_API CAENHVRESULT  CAENHV_SetChParam(int handle, unsigned short slot, 
+ const char *ParName, unsigned short ChNum, const unsigned short *ChList, void *ParValue);
 
 CAENHVLIB_API CAENHVRESULT  CAENHV_GetExecCommList(int handle,
- ushort *NumComm, char **CommNameList);
+ unsigned short *NumComm, char **CommNameList);
 
 CAENHVLIB_API CAENHVRESULT  CAENHV_ExecComm(int handle, const char *CommName);
 
