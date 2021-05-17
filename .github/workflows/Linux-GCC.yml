@@ -32,7 +32,6 @@ jobs:
       uses: jwlawson/actions-setup-cmake@v1.9
       with:
         cmake-version: '${{env.CMAKE_VERSION}}'
-        github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Configure
       run: cmake -S ${{ github.workspace }} -B ${{ env.CMAKE_BUILD_PREFIX }} -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DCMAKE_INSTALL_PREFIX=${{ env.CMAKE_INSTALL_PREFIX }}
