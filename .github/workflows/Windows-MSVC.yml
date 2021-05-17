@@ -14,7 +14,8 @@ env:
   CC: cl
   CXX: cl
   artifact: "Windows-MSVC.tar.xz"
-
+  BUILD_TYPE: "Debug"
+  
 jobs:
 
   build:
