@@ -41,6 +41,7 @@ jobs:
       run: cmake --build ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.BUILD_TYPE }} --parallel 2
 
     - name: Run tests
+      working-directory: ${{ env.CMAKE_BUILD_PREFIX }}
       run: ctest -C ${{ env.BUILD_TYPE }} -VV --output-on-failure
     
     - name: Install Strip
