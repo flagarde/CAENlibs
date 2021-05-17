@@ -51,7 +51,7 @@ jobs:
       shell: cmd
       
     - name: Install Strip
-      run: cmake --install build --prefix ${{ env.CMAKE_INSTALL_PREFIX }}
+      run: cmake --install build --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --config ${{ env.BUILD_TYPE }}
       shell: cmd
       
     - name: Run tests
