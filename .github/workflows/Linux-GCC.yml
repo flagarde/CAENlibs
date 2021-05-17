@@ -40,12 +40,11 @@ jobs:
     - name: Build
       run: cmake --build ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.BUILD_TYPE }} --parallel 2
 
-    - name: Install Strip
-      run: cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.BUILD_TYPE }} --strip
-      
     - name: Run tests
-      working-directory: ${{ env.CMAKE_BUILD_PREFIX }}
       run: ctest -C ${{ env.BUILD_TYPE }} -VV --output-on-failure
+    
+    - name: Install Strip
+      run: sudo cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.BUILD_TYPE }} --strip
 
   release:
     name: "Release"
