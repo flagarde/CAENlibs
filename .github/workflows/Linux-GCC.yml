@@ -42,12 +42,12 @@ jobs:
 
     - name: Build
       run: cmake --build build --config ${{ env.BUILD_TYPE }} --parallel 2
-
-    - name: Install Strip
-      run: cmake --install build --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --strip
       
     - name: Run tests
       run: ctest -C ${{ env.BUILD_TYPE }} -VV --output-on-failure
+      
+    - name: Install Strip
+      run: cmake --install build --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --strip
 
   release:
     name: "Release"
