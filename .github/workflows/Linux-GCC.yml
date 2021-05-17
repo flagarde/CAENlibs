@@ -1,19 +1,21 @@
 name: Linux GCC
 
 on:
-    push:
-    pull_request:
-    schedule:
-    #Every Sunday at midnight
+  push:
+  pull_request:
+  schedule:
+  #Every Sunday at midnight
     - cron:  '0 0 * * 0'
 
 env:
+  BUILD_TYPE: Release
+  CMAKE_INSTALL_PREFIX: "../bin"
+  CMAKE_BUILD_PREFIX: "./build"
+
   CMAKE_VERSION: 3.16.x
   NINJA_VERSION: 1.10.2
-  BUILD_TYPE: Release
   CC: gcc-10
   CXX: g++-10
-  CMAKE_INSTALL_PREFIX: "./bin"
   artifact: "Linux-GCC.tar.xz"
 
 jobs:
@@ -32,22 +34,17 @@ jobs:
         cmake-version: '${{env.CMAKE_VERSION}}'
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Install Ninja
-      uses: seanmiddleditch/gha-setup-ninja@v3
-      with:
-        version: '${{env.NINJA_VERSION}}'
-
     - name: Configure
-      run: cmake -S ${{ github.workspace }} -G Ninja  -B build -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DCMAKE_INSTALL_PREFIX=${{ env.CMAKE_INSTALL_PREFIX }}
+      run: cmake -S ${{ github.workspace }} -B ${{ env.CMAKE_BUILD_PREFIX }} -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DCMAKE_INSTALL_PREFIX=${{ env.CMAKE_INSTALL_PREFIX }}
 
     - name: Build
-      run: cmake --build build --config ${{ env.BUILD_TYPE }} --parallel 2
-      
+      run: cmake --build ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.BUILD_TYPE }} --parallel 2
+
     - name: Run tests
       run: ctest -C ${{ env.BUILD_TYPE }} -VV --output-on-failure
-      
+    
     - name: Install Strip
-      run: cmake --install build --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --strip
+      run: cmake --config ${{ env.BUILD_TYPE }} --install ${{ env.CMAKE_BUILD_PREFIX }} --strip
 
   release:
     name: "Release"

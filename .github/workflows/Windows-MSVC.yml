@@ -1,21 +1,23 @@
 name: Windows MSVC
 
 on:
-    push:
-    pull_request:
-    schedule:
-    #Every Sunday at midnight
+  push:
+  pull_request:
+  schedule:
+  #Every Sunday at midnight
     - cron:  '0 0 * * 0'
 
 
 env:
+  BUILD_TYPE: Release
+  CMAKE_INSTALL_PREFIX: "../bin"
+  CMAKE_BUILD_PREFIX: "./build"
+  
   CMAKE_VERSION: 3.16.x
   NINJA_VERSION: 1.10.2
   CC: cl
   CXX: cl
   artifact: "Windows-MSVC.tar.xz"
-  BUILD_TYPE: "Debug"
-  CMAKE_INSTALL_PREFIX: "../bin"
   
 jobs:
 
@@ -35,27 +37,22 @@ jobs:
         cmake-version: '${{env.CMAKE_VERSION}}'
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Install Ninja
-      uses: seanmiddleditch/gha-setup-ninja@v3
-      with:
-        version: '${{env.NINJA_VERSION}}'
-
     - uses: ilammy/msvc-dev-cmd@v1
 
     - name: Configure
-      run: cmake -S . -B build -DCMAKE_INSTALL_PREFIX=${{ env.CMAKE_INSTALL_PREFIX }}
+      run: cmake -S ${{ github.workspace }} -B ${{ env.CMAKE_BUILD_PREFIX }} -DCMAKE_INSTALL_PREFIX=${{ env.CMAKE_INSTALL_PREFIX }}
       shell: cmd
 
     - name: Build
-      run: cmake --build build --config ${{ env.BUILD_TYPE }} --parallel 2
+      run: cmake --build ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.BUILD_TYPE }} --parallel 2
       shell: cmd
-      
-    - name: Install Strip
-      run: cmake --install build --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --config ${{ env.BUILD_TYPE }}
-      shell: cmd
-      
+
     - name: Run tests
       run: ctest -C ${{ env.BUILD_TYPE }} -VV --output-on-failure
+      shell: cmd
+    
+    - name: Install Strip
+      run: cmake --config ${{ env.BUILD_TYPE }} --install ${{ env.CMAKE_BUILD_PREFIX }} --strip
       shell: cmd
 
   release:
