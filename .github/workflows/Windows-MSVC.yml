@@ -49,7 +49,7 @@ jobs:
       shell: cmd
       
     - name: Install Strip
-      run: cmake --install build --prefix instdir --strip
+      run: cmake --install build --prefix ../instdir
       shell: cmd
       
     - name: Run tests
