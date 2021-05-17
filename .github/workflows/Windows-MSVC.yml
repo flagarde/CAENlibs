@@ -11,12 +11,9 @@ on:
 env:
   CMAKE_VERSION: 3.16.x
   NINJA_VERSION: 1.10.2
-  BUILD_TYPE: Debug
   CC: cl
   CXX: cl
   artifact: "Windows-MSVC.tar.xz"
-  BUILDCACHE_VERSION: 0.23.0
-  BUILDCACHE_DIR: ${{ github.workspace }}/buildcache_dir
 
 jobs:
 
@@ -44,7 +41,7 @@ jobs:
     - uses: ilammy/msvc-dev-cmd@v1
 
     - name: Configure
-      run: cmake -S . -B build -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DCMAKE_INSTALL_PREFIX=../bin
+      run: cmake -S . -B build -DCMAKE_INSTALL_PREFIX=../bin
       shell: cmd
 
     - name: Build
