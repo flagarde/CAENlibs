@@ -12,7 +12,8 @@ env:
   NINJA_VERSION: 1.10.2
   BUILD_TYPE: Release
   artifact: "Windows-M2sys.tar.xz"
-
+  CMAKE_INSTALL_PREFIX: "../bin"
+  
 jobs:
 
   build:
@@ -38,16 +39,15 @@ jobs:
 
     - name: Configure
       working-directory: ${{ github.workspace }}
-      run: cmake -S . -G Ninja  -B build -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DCMAKE_INSTALL_PREFIX=../bin
+      run: cmake -S . -G Ninja  -B build -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DCMAKE_INSTALL_PREFIX=${{ env.CMAKE_INSTALL_PREFIX }}
 
     - name: Build
       run: cmake --build build --config ${{ env.BUILD_TYPE }} --parallel 2
 
     - name: Install Strip
-      run: cmake --install build --prefix instdir --strip
+      run: cmake --install build --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --strip
       
     - name: Run tests
-      working-directory: ${{ github.workspace }}/build
       run: ctest -C ${{ env.BUILD_TYPE }} -VV --output-on-failure
 
   release:

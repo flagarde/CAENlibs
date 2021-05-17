@@ -15,6 +15,7 @@ env:
   CXX: cl
   artifact: "Windows-MSVC.tar.xz"
   BUILD_TYPE: "Debug"
+  CMAKE_INSTALL_PREFIX: "../bin"
   
 jobs:
 
@@ -42,7 +43,7 @@ jobs:
     - uses: ilammy/msvc-dev-cmd@v1
 
     - name: Configure
-      run: cmake -S . -B build -DCMAKE_INSTALL_PREFIX=../bin
+      run: cmake -S . -B build -DCMAKE_INSTALL_PREFIX=${{ env.CMAKE_INSTALL_PREFIX }}
       shell: cmd
 
     - name: Build
@@ -50,7 +51,7 @@ jobs:
       shell: cmd
       
     - name: Install Strip
-      run: cmake --install build --prefix ../instdir
+      run: cmake --install build --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --config ${{ env.BUILD_TYPE }}
       shell: cmd
       
     - name: Run tests
