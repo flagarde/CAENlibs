@@ -43,38 +43,6 @@ jobs:
 
     - uses: ilammy/msvc-dev-cmd@v1
 
-    - name: Download buildcache
-      id: buildcache-download
-      shell: cmake -P {0}
-      run: |
-          set(buildcache_suffix "win-msvc.zip")
-          set(buildcache_version $ENV{BUILDCACHE_VERSION})
-          set(buildcache_url "https://github.com/mbitsnbites/buildcache/releases/download/v${buildcache_version}/buildcache-${buildcache_suffix}")
-          file(DOWNLOAD "${buildcache_url}" ./buildcache.zip)
-          execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf ./buildcache.zip)
-
-    - name: Prepare cache timestamp
-      id: cache_timestamp_string
-      shell: cmake -P {0}
-      run: |
-          string(TIMESTAMP current_date "%Y-%m-%d" UTC)
-          message("::set-output name=timestamp::${current_date}")
-
-    - name: Cache Buildcache
-      id: cache-buildcache
-      uses: actions/cache@v2
-      with:
-        path: ${{ env.BUILDCACHE_DIR }}
-        key: ${{ matrix.config.name }}-cache-v02-${{ steps.cache_timestamp_string.outputs.timestamp }}
-
-    - name: Create Folder for buildcache
-      run: New-Item ${{ env.BUILDCACHE_DIR }} -ItemType "directory" -Force
-      shell: pwsh
-
-    - name: Add buildcache to system path
-      run: echo "${{github.workspace}}/buildcache/bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8
-      shell: pwsh
-
     - name: Configure
       run: cmake -S . -B build -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DCMAKE_INSTALL_PREFIX=../bin
       shell: cmd
@@ -88,7 +56,7 @@ jobs:
       shell: cmd
       
     - name: Run tests
-      run: ctest -C ${{ env.BUILD_TYPE }} -j2 -VV --output-on-failure
+      run: ctest -C ${{ env.BUILD_TYPE }} -VV --output-on-failure
       shell: cmd
 
   release:

@@ -36,11 +36,8 @@ jobs:
       with:
         version: '${{env.NINJA_VERSION}}'
 
-    - name: Use ccache
-      uses: hendrikmuhs/ccache-action@v1.0.4
-
     - name: Configure
-      run: cmake -S ${{ github.workspace }} -G Ninja  -B build -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -D CMAKE_C_COMPILER_LAUNCHER=ccache -D CMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_INSTALL_PREFIX=../bin
+      run: cmake -S ${{ github.workspace }} -G Ninja  -B build -D CMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DCMAKE_INSTALL_PREFIX=../bin
 
     - name: Build
       run: cmake --build build --config ${{ env.BUILD_TYPE }} --parallel 2
@@ -50,7 +47,7 @@ jobs:
       
     - name: Run tests
       working-directory: ${{ github.workspace }}/build
-      run: ctest -C ${{ env.BUILD_TYPE }} -j2 -VV --output-on-failure
+      run: ctest -C ${{ env.BUILD_TYPE }} -VV --output-on-failure
 
   release:
     name: "Release"
