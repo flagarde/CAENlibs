@@ -48,11 +48,14 @@ extern void Sleep(unsigned int x);
 #ifndef uchar 
 #define uchar unsigned char
 #endif
-#ifndef ushort 
-#define ushort unsigned short
-#endif
-#ifndef ulong
-#define ulong unsigned int
+
+#ifndef __MINGW32__
+  #ifndef ushort 
+  #define ushort unsigned short
+  #endif
+  #ifndef ulong
+  #define ulong unsigned int
+  #endif
 #endif
 
 
