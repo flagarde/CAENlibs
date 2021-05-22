@@ -10,7 +10,7 @@ on:
 env:
   BUILD_TYPE: Release
   CMAKE_INSTALL_PREFIX: "bin"
-  CMAKE_BUILD_PREFIX: "build"
+  CMAKE_BUILD_PREFIX: "./build"
   
   CMAKE_VERSION: 3.16.x
   NINJA_VERSION: 1.10.2
