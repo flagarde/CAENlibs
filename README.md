@@ -5,8 +5,8 @@ Libraries for CAEN hardwares
 [LC]: https://github.com/flagarde/CAENlibs/actions/workflows/Linux-Clang.yml
 [LCB]: https://github.com/flagarde/CAENlibs/actions/workflows/Linux-Clang.yml/badge.svg
 
-[LG]: https://github.com/flagarde/CAENlibs/actions/workflows/Linux-Clang.yml
-[LGB]: https://github.com/flagarde/CAENlibs/actions/workflows/Linux-Clang.yml/badge.svg
+[LG]: https://github.com/flagarde/CAENlibs/actions/workflows/Linux-GCC.yml
+[LGB]: https://github.com/flagarde/CAENlibs/actions/workflows/Linux-GCC.yml/badge.svg
 
 [MC]: https://github.com/flagarde/CAENlibs/actions/workflows/MacOS-Clang.yml
 [MCB]: https://github.com/flagarde/CAENlibs/actions/workflows/MacOS-Clang.yml/badge.svg
