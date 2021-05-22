@@ -1,121 +1,44 @@
 name: Windows MSVC
 
+env:
+  CMAKE_VERSION: 3.16.x
+  CMAKE_BUILD_TYPE: Release
+  CMAKE_BUILD_PREFIX: "${{ github.workspace }}/build"
+  ROOT_VERSION: "6.24.00"
+  ROOT_URL: "https://root.cern/download"
+
 on:
-  push:
-  pull_request:
-  schedule:
-  #Every Sunday at midnight
+    push:
+    pull_request:
+    schedule:
+    #Every Sunday at midnight
     - cron:  '0 0 * * 0'
 
-
-env:
-  BUILD_TYPE: Release
-  CMAKE_INSTALL_PREFIX: "bin"
-  CMAKE_BUILD_PREFIX: "build"
-  
-  CMAKE_VERSION: 3.16.x
-  NINJA_VERSION: 1.10.2
-  CC: cl
-  CXX: cl
-  artifact: "Windows-MSVC.tar.xz"
-  
 jobs:
-
+  # Checkout apply clang-format and upload artifact
   build:
     name: "Build"
     runs-on: windows-latest
-    strategy:
-      fail-fast: false
     steps:
 
-    - name: Checkout
-      uses: actions/checkout@v2.3.4
+    - name: Setup Visual Studio
+      uses: ilammy/msvc-dev-cmd@v1.8.0
 
-    - name: Install cmake
+    - name: Setup CMake
       uses: jwlawson/actions-setup-cmake@v1.9
       with:
         cmake-version: '${{env.CMAKE_VERSION}}'
 
-    - uses: ilammy/msvc-dev-cmd@v1
+    - name: Checkout
+      uses: actions/checkout@v2.3.4
 
     - name: Configure
-      run: cmake -S ${{ github.workspace }} -B ${{ env.CMAKE_BUILD_PREFIX }} -DCMAKE_INSTALL_PREFIX=${{ env.CMAKE_INSTALL_PREFIX }}
+      run: cmake -S ${{ github.workspace }} -B ${{ env.CMAKE_BUILD_PREFIX }} -DBUILD_ROOT=OFF -DBUILD_DAQ=OFF -DBUILD_CAEN=OFF
       shell: cmd
 
     - name: Build
-      run: cmake --build ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.BUILD_TYPE }} --parallel 2
-      shell: cmd
-    
-    - name: Install Strip
-      run: cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.BUILD_TYPE }} --strip
-      shell: cmd
-      
+      run: cmake --build ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel 2
+
     - name: Run tests
-      working-directory: ${{ github.workspace }}\${{ env.CMAKE_BUILD_PREFIX }}
-      run: ctest -C ${{ env.BUILD_TYPE }} -VV
-      shell: cmd
-      
-  release:
-    name: "Release"
-    if: contains(github.ref, 'tags/v')
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1.1.4
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        draft: false
-        prerelease: false
-
-    - name: Store Release url
-      run: |
-        echo "${{ steps.create_release.outputs.upload_url }}" > ./upload_url
-
-    - name: Pack
-      working-directory: instdir
-      run: cmake -E tar cJfv ../${{ env.artifact }} .
-
-    - name: Upload
-      uses: actions/upload-artifact@v2
-      with:
-        path: instdir
-        name: ${{ env.artifact }}
-
-  publish:
-    if: contains(github.ref, 'tags/v')
-    name: "Publish"
-    runs-on: ubuntu-latest
-    needs: release
-
-    steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: ${{ env.artifact }}
-        path: ./
-
-    - name: Download URL
-      uses: actions/download-artifact@v2
-      with:
-        name: upload_url
-        path: ./
-    - id: set_upload_url
-      run: |
-        upload_url=`cat ./upload_url`
-        echo ::set-output name=upload_url::$upload_url
-    - name: Upload to Release
-      id: upload_to_release
-      uses: actions/upload-release-asset@v1.0.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.set_upload_url.outputs.upload_url }}
-        asset_path: ./${{ env.artifact }}
-        asset_name: ${{ env.artifact }}
-        asset_content_type: application/x-gtar
+      working-directory: ${{ env.CMAKE_BUILD_PREFIX }}
+      run: ctest -C ${{ env.CMAKE_BUILD_TYPE }} -j2 -VV --output-on-failure
