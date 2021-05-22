@@ -49,7 +49,7 @@ jobs:
       shell: msys2 {0}
 
     - name: Install Strip
-      run: sudo cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --strip
+      run: cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --strip
       shell: msys2 {0}
       
     - name: Run tests
