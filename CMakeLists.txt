@@ -17,8 +17,10 @@ if(APPLE)
 endif()
 
 include(GNUInstallDirs)
-include(InstallRequiredSystemLibraries)
+
 set(CMAKE_INSTALL_UCRT_LIBRARIES TRUE)
+include(InstallRequiredSystemLibraries)
+
 include(CMakePackageConfigHelpers)
 
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
