@@ -4,13 +4,11 @@ env:
   CMAKE_VERSION: 3.16.x
   CMAKE_BUILD_TYPE: Release
   CMAKE_BUILD_PREFIX: "${{ github.workspace }}/build"
+  CMAKE_INSTALL_PREFIX: "${{ github.workspace }}/install"
 
 on:
     push:
     pull_request:
-    schedule:
-    #Every Sunday at midnight
-    - cron:  '0 0 * * 0'
 
 jobs:
   # Checkout apply clang-format and upload artifact
@@ -28,7 +26,7 @@ jobs:
         cmake-version: '${{env.CMAKE_VERSION}}'
 
     - name: Configure
-      run: cmake -S ${{ github.workspace }} -B ${{ env.CMAKE_BUILD_PREFIX }} -D CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }}
+      run: cmake -S ${{ github.workspace }} -B ${{ env.CMAKE_BUILD_PREFIX }} -DCMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }}  -DCMAKE_INSTALL_PREFIX=${{ env.CMAKE_INSTALL_PREFIX }}
 
     - name: Build
       run: cmake --build ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel 2
