@@ -41,11 +41,6 @@ jobs:
       
     - name: Install Strip
       run: cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --strip
-      
-    - uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact
-        path: ${{ env.CMAKE_INSTALL_PREFIX }}
 
     - name: Run tests
       working-directory: ${{ env.CMAKE_BUILD_PREFIX }}
