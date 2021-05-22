@@ -48,6 +48,10 @@ jobs:
       run: cmake --build ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel 2
       shell: msys2 {0}
 
+    - name: Install Strip
+      run: sudo cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --strip
+      shell: msys2 {0}
+      
     - name: Run tests
       working-directory: ${{ env.CMAKE_BUILD_PREFIX }}
       run: ctest -C ${{ env.CMAKE_BUILD_TYPE }} -j2 -VV --output-on-failure

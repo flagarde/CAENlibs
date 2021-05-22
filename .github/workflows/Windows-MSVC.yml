@@ -34,6 +34,9 @@ jobs:
 
     - name: Build
       run: cmake --build ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel 2
+      
+    - name: Install Strip
+      run: sudo cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --strip
 
     - name: Run tests
       working-directory: ${{ env.CMAKE_BUILD_PREFIX }}
