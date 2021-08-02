@@ -3,9 +3,9 @@ name: Linux GCC
 env:
   CMAKE_VERSION: 3.16.x
   CMAKE_BUILD_TYPE: Release
-  CMAKE_BUILD_PREFIX: "${{ github.workspace }}/build"  
+  CMAKE_BUILD_PREFIX: "${{ github.workspace }}/build"
   CMAKE_INSTALL_PREFIX: "${{ github.workspace }}/install"
-  
+
 on:
     push:
     pull_request:
@@ -38,7 +38,7 @@ jobs:
 
     - name: Build
       run: cmake --build ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel 2
-      
+
     - name: Install Strip
       run: cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --strip
 

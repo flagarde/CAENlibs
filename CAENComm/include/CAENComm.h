@@ -5,7 +5,7 @@
 * +390594388398 - www.caen.it
 *
 ***************************************************************************//**
-* 
+*
 * Name      CAENComm.h
 * Project   CAENComm - Communication Layer
 * Authors   Carlo Tintori & Alberto Lucchesi (support.computing@caen.it)
@@ -22,7 +22,7 @@
 
 #ifdef _WIN32
 #include <windows.h>
-#else 
+#else
 #include <sys/time.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -331,7 +331,7 @@ CAENComm_ErrorCode STDCALL CAENComm_IACKCycle(int handle, IRQLevels Level, int *
 /**************************************************************************//**
 * \fn      CAENComm_ErrorCode STDCALL CAENComm_IRQWait(int handle, uint32_t Timeout)
 * \brief   The function wait the IRQ until one of them raise or timeout expires.
-		   This function can be used ONLY on board NOT controlled by CAEN VME Bridges 
+		   This function can be used ONLY on board NOT controlled by CAEN VME Bridges
 
 * \param   [IN]  handle: device handler
 * \param   [IN]  Timeout: Timeout in milliseconds.
@@ -360,7 +360,7 @@ CAENComm_ErrorCode STDCALL CAENComm_VMEIRQWait(CAENComm_ConnectionType LinkType,
 * \param   [IN]  handle: device handler
 * \param   [IN]  info: The interested info (see CAENCOMM_INFO enum).
 * \param   [OUT]  data: an array (user defined to 30 byte) with the requested info for
-*			all the CAENCOMM_INFO entry except for 'CAENComm_VMELIB_handle' that 
+*			all the CAENCOMM_INFO entry except for 'CAENComm_VMELIB_handle' that
 *			requires a pointer to an uint32_t value
 * \return  0 = Success; negative numbers are error codes
 ******************************************************************************/

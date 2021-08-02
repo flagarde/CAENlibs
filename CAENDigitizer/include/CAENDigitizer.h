@@ -1,5 +1,5 @@
 /******************************************************************************
-* 
+*
 * CAEN SpA - Computing Division
 * Via Vetraia, 11 - 55049 - Viareggio ITALY
 * +390594388398 - www.caen.it
@@ -57,7 +57,7 @@ extern "C" {
 * \param   [IN]  ConetNode     :
 *                         - for CONET identify  which device in the daisy-chain is addressed
 *                         - for USB must be 0.
-* \param   [IN]     VMEBaseAddress: The VME base address of the board in case you want to access a board through VME bus, 0 otherwise.                         
+* \param   [IN]     VMEBaseAddress: The VME base address of the board in case you want to access a board through VME bus, 0 otherwise.
 * \param   [OUT] handle        : device handler
 * \return  0 = Success; negative numbers are error codes
 ******************************************************************************/
@@ -106,7 +106,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_ReadRegister(int handle, uint32_t Add
 * \param    [OUT] BoardInfo : the CAEN_DGTZ_BoardInfo_t with the board information retrieved from the device
 * \return  0 = Success; negative numbers are error codes
 ******************************************************************************/
-CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_GetInfo(int handle, CAEN_DGTZ_BoardInfo_t *BoardInfo); 
+CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_GetInfo(int handle, CAEN_DGTZ_BoardInfo_t *BoardInfo);
 
 
 /**************************************************************************//**
@@ -152,7 +152,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_SWStartAcquisition(int handle);
 
 /**************************************************************************//**
 * \fn          CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_SWStopAcquisition(int handle);
-* \brief     Stops Digitizer acquisition 
+* \brief     Stops Digitizer acquisition
 *
 * \param     [IN] handle: digitizer handle.
 * \return  0 = Success; negative numbers are error codes
@@ -166,7 +166,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_SWStopAcquisition(int handle);
 *
 * \param     [IN] handle       : digitizer handle.
 * \param     [IN] state        : interrupts enable status
-* \param     [IN] level        : VME IRQ Level 
+* \param     [IN] level        : VME IRQ Level
 * \param     [IN] status_id    : VME status_id to assign to the Digitizer
 * \param     [IN] event_number : number of event required to raise interrupt
 * \param     [IN] mode         : interrupt mode [CAEN_DGTZ_IRQ_MODE_RORA|CAEN_DGTZ_IRQ_MODE_ROAK]
@@ -204,7 +204,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_IRQWait(int handle, uint32_t timeout)
 /**************************************************************************//**
 * \brief     Waits for an interrupt from a CAEN VME Bridge
 *
-* \param   [IN]  LinkType  : The link used to connect to the CAEN VME Bridge 
+* \param   [IN]  LinkType  : The link used to connect to the CAEN VME Bridge
 * \param   [IN]  LinkNum   :
 *                            - when using CONET, it is the optical link number to be used
 *                            - when using USB, it is the USB device number to be used
@@ -212,7 +212,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_IRQWait(int handle, uint32_t timeout)
 *                            - for CONET identify  witch device in the daisy-chain is addressed
 *                            - for USB must be 0.
 * \param   [IN]  IRQMask   : A bit-mask indicating the IRQ lines
-* \param   [IN]     timeout   : timeout (in milliseconds)                         
+* \param   [IN]     timeout   : timeout (in milliseconds)
 * \param   [OUT] VMEHandle : device handler of the CAEN VME Bridge that received interrupt request
 * \return  0 = Success; negative numbers are error codes
 ******************************************************************************/
@@ -223,7 +223,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_VMEIRQWait(CAEN_DGTZ_ConnectionType L
 * \brief     Checks VME interrupt level
 *
 * \param   [IN] VMEhandle : handle of CAEN VME Bridge that raised the interrupt request (retrieved from CAEN_DGTZ_VMEIRQWait function)
-* \param   [OUT] Mask     : bitmask representing the active VME interrupt requests. 
+* \param   [OUT] Mask     : bitmask representing the active VME interrupt requests.
 * \return  0 = Success; negative numbers are error codes
 ******************************************************************************/
 CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_VMEIRQCheck(int VMEHandle, uint8_t *Mask);
@@ -233,7 +233,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_VMEIRQCheck(int VMEHandle, uint8_t *M
 * \brief     Performs a VME Interrupt Acknowledge cycle to know the board_id of the board that raised an interrupt
 *
 * \param   [IN] handle     : handle of the CAEN VME Bridge that raised the interrupt (retrieved from CAEN_DGTZ_VMEIRQWait function)
-* \param   [IN] level      : VME interrupt level to acknowledge 
+* \param   [IN] level      : VME interrupt level to acknowledge
 * \param   [OUT] board_id  : VME Digitizer board id of the interrupter
 * \return  0 = Success; negative numbers are error codes
 ******************************************************************************/
@@ -265,7 +265,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_GetDESMode(int handle, CAEN_DGTZ_EnaD
 *
 * \param     [IN] handle  : digitizer handle
 * \param     [IN] size    : the size of the record (in samples)
-* \param    [IN] channel : \c int specifying the channel to set the record length for. 
+* \param    [IN] channel : \c int specifying the channel to set the record length for.
 *                           DPP-PSD and DPP-CI require this parameter,
 *                           DPP-PHA ignores it
 * \return  0 = Success; negative numbers are error codes
@@ -278,7 +278,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_SetRecordLength(int handle, uint32_t 
 *
 * \param     [IN] handle  : digitizer handle
 * \param     [OUT] size   : the size of the record (in samples)
-* \param    [IN] channel : \c int specifying the channel to get the record length for. 
+* \param    [IN] channel : \c int specifying the channel to get the record length for.
 *                           DPP-PSD and DPP-CI require this parameter,
 *                           DPP-PHA ignores it
 * \return  0 = Success; negative numbers are error codes
@@ -308,7 +308,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_GetChannelEnableMask(int handle, uint
 
 
 /**************************************************************************//**
-* \brief     Sets channels group that will be enabled into events. 
+* \brief     Sets channels group that will be enabled into events.
 *
 *           Valid only for digitizers that supports channel groups (V1740, DT5740 for instance).
 *           Please refer to digitizers documentation.
@@ -320,7 +320,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_SetGroupEnableMask(int handle, uint32
 
 
 /**************************************************************************//**
-* \brief     Gets current mask of enabled channel groups in events. 
+* \brief     Gets current mask of enabled channel groups in events.
 *           Valid only for digitizers that supports channel groups (V1740, DT5740 for instance).
 *
 * \param     [IN] handle : digitizer handle.
@@ -371,7 +371,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_GetSWTriggerMode(int handle, CAEN_DGT
 
 
 /**************************************************************************//**
-* \brief     Sets channel self trigger mode according to CAEN_DGTZ_TriggerMode_t. 
+* \brief     Sets channel self trigger mode according to CAEN_DGTZ_TriggerMode_t.
 *
 * \param     [IN] handle      : digitizer handle
 * \param     [IN] mode        : self trigger mode
@@ -388,7 +388,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_SetChannelSelfTrigger(int handle, CAE
 
 
 /**************************************************************************//**
-* \brief     Gets current channel self trigger mode setting. 
+* \brief     Gets current channel self trigger mode setting.
 *
 * \param     [IN] handle  : digitizer handle
 * \param    [IN] channel : select channel to get the self trigger mode
@@ -399,7 +399,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_GetChannelSelfTrigger(int handle, uin
 
 
 /**************************************************************************//**
-* \brief     Sets channel group self trigger mode according to mode 
+* \brief     Sets channel group self trigger mode according to mode
 *           Valid only for digitizers that supports channel groups (V1740, DT5740 for instance).
 *
 * \param     [IN] handle    : digitizer handle
@@ -423,7 +423,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_GetGroupSelfTrigger(int handle, uint3
 
 
 /**************************************************************************//**
-* \brief     Selects which channel is enabled to contribute to event among available channels of selected channel group. 
+* \brief     Selects which channel is enabled to contribute to event among available channels of selected channel group.
 *           Valid only for digitizers that supports channel groups (V1740, DT5740 for instance).
 *
 * \param     [IN] handle      : digitizer handle.
@@ -435,7 +435,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_SetChannelGroupMask(int handle, uint3
 
 
 /**************************************************************************//**
-* \brief     Gets current channel that are enabled to contribute to event among available channels of selected channel group. 
+* \brief     Gets current channel that are enabled to contribute to event among available channels of selected channel group.
 *           Valid only for digitizers that supports channel groups (V1740, DT5740 for instance).
 *
 * \param     [IN] handle       : digitizer handle.
@@ -507,7 +507,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_SetChannelDCOffset(int handle, uint32
 *
 * \param     [IN]  handle  : digitizer handle.
 * \param     [IN]  channel : the channel which takes the information.
-* \param    [OUT] Tvalue  : the DC offset set.  
+* \param    [OUT] Tvalue  : the DC offset set.
 *                           Tvalue is expressed in channel DAC (Digital to Analog Converter) steps.
 *                           Please refer to digitizer documentation for possible value range.
 * \return  0 = Success; negative numbers are error codes
@@ -664,7 +664,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_SetAcquisitionMode(int handle, CAEN_D
 
 
 /**************************************************************************//**
-* \brief     Gets the acquisition mode of the digitizer 
+* \brief     Gets the acquisition mode of the digitizer
 *
 * \param     [IN]  handle : digitizer handle
 * \param     [OUT] mode   : the acquisition mode set
@@ -684,7 +684,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_SetRunSynchronizationMode(int handle,
 
 
 /**************************************************************************//**
-* \brief     Gets the run synchronization mode of the digitizer 
+* \brief     Gets the run synchronization mode of the digitizer
 *
 * \param     [IN]  handle : digitizer handle
 * \param     [OUT] mode   : the current run synchronization mode
@@ -694,7 +694,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_GetRunSynchronizationMode(int handle,
 
 
 /**************************************************************************//**
-* \brief     Sets waveform to output on Digitizer Analog Monitor Front Panel output 
+* \brief     Sets waveform to output on Digitizer Analog Monitor Front Panel output
 *
 * \param     [IN] handle : digitizer handle.
 * \param     [IN] mode   : Analog Monitor mode.
@@ -704,7 +704,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_SetAnalogMonOutput(int handle, CAEN_D
 
 
 /**************************************************************************//**
-* \brief     Gets current waveform selected to drive Digitizer Analog Monitor Front Panel output 
+* \brief     Gets current waveform selected to drive Digitizer Analog Monitor Front Panel output
 *
 * \param     [IN]  handle : digitizer handle
 * \param     [OUT] mode   : Analog Monitor output mode
@@ -719,7 +719,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_GetAnalogMonOutput(int handle, CAEN_D
 * \param     [IN] handle      : digitizer handle
 * \param     [IN] channelmask : channel enable mask for Analog Inspection
 * \param     [IN] offset      : Analog Inspection Offset
-* \param     [IN] mf          : Analog Inspection Multiply Factor 
+* \param     [IN] mf          : Analog Inspection Multiply Factor
 * \param     [IN] ami         : Analog Inspection Invert
 * \return  0 = Success; negative numbers are error codes
 ******************************************************************************/
@@ -751,7 +751,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_DisableEventAlignedReadout(int handle
 * \brief     Enable or disable the Pack 2.5 mode of V1720/DT5720 Digitizers
 *
 * \param     [IN] handle : digitizer handle
-* \param     [IN] mode: Enable/Disable the Pack 2,5 mode 
+* \param     [IN] mode: Enable/Disable the Pack 2,5 mode
 * \return  0 = Success; negative numbers are error codes
 ******************************************************************************/
 CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_SetEventPackaging(int handle,CAEN_DGTZ_EnaDis_t mode);
@@ -761,7 +761,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_SetEventPackaging(int handle,CAEN_DGT
 * \brief     get the information about the Pack 2.5 mode of V1720/DT5720 Digitizers
 *
 * \param     [IN] handle : digitizer handle
-* \param     [OUT] mode: Enable/Disable the Pack 2,5 mode 
+* \param     [OUT] mode: Enable/Disable the Pack 2,5 mode
 * \return  0 = Success; negative numbers are error codes
 ******************************************************************************/
 CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_GetEventPackaging(int handle,CAEN_DGTZ_EnaDis_t *mode);
@@ -790,7 +790,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_SetMaxNumEventsBLT(int handle, uint32
 
 
 /**************************************************************************//**
-* \brief     Gets the max number of aggregates of each block transfer  
+* \brief     Gets the max number of aggregates of each block transfer
 *
 * \param     [IN]  handle    : digitizer handle
 * \param     [OUT] numEvents : the number of aggregates set.
@@ -801,7 +801,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_GetMaxNumAggregatesBLT(int handle, ui
 
 /**************************************************************************//**
 * \brief     Gets the max number of events of each block transfer
-* \deprecated On DPP-PHA, DPP-PSD and DPP-CI use CAEN_DGTZ_SetDPPEventAggregation         
+* \deprecated On DPP-PHA, DPP-PSD and DPP-CI use CAEN_DGTZ_SetDPPEventAggregation
 *
 * \param     [IN]  handle    : digitizer handle
 * \param     [OUT] numEvents : the number of events set.
@@ -850,7 +850,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_FreeReadoutBuffer(char **buffer);
 * \deprecated On DPP-PHA, DPP-PSD and DPP-CI use the <b>new readout API</b>
 *
 * \param     [IN] handle     : digitizer handle
-* \param     [IN] buffer     : Address to the acquisition buffer 
+* \param     [IN] buffer     : Address to the acquisition buffer
 * \param     [IN] bufferSize : Size of the data stored in the acquisition buffer
 * \param     [OUT] numEvents : Number of events stored in the acquisition buffer
 * \return  0 = Success; negative numbers are error codes
@@ -863,7 +863,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_GetNumEvents(int handle, char *buffer
 * \deprecated On DPP-PHA, DPP-PSD and DPP-CI use the <b>new readout API</b>
 *
 * \param     [IN] handle     : digitizer handle
-* \param     [IN] buffer     : Address of the acquisition buffer 
+* \param     [IN] buffer     : Address of the acquisition buffer
 * \param     [IN] bufferSize : acquisition buffer size (in samples)
 * \param     [IN] numEvents  : Number of events stored in the acquisition buffer
 * \param     [OUT] eventInfo : Event Info structure containing the information about the specified event
@@ -988,8 +988,8 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_SetNumEventsPerAggregate(int handle, 
 
 
 /**************************************************************************//**
-* \brief     Gets the number of events that each aggregate will contain 
-* \deprecated 
+* \brief     Gets the number of events that each aggregate will contain
+* \deprecated
 *
 * \param     [IN] handle      : digitizer handle
 * \param     [OUT] numEvents  : number of events per aggregate
@@ -1005,11 +1005,11 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_GetNumEventsPerAggregate(int handle, 
 * \note     Only for DPP-PHA, DPP-PSD and DPP-CI
 *
 * \param     [IN] handle      : digitizer handle
-* \param     [IN] threshold   : Specifies how many events to let accumulate in the board memory before they are rendered available for readout. 
+* \param     [IN] threshold   : Specifies how many events to let accumulate in the board memory before they are rendered available for readout.
 *                              A low number maximizes responsiveness, since data are read as soon as they are stored in memory, while a high number maximizes efficiency, since fewer transfers are made.
 *                              Supplying 0 will let the library choose the best value depending on acquisition mode and other parameters.
 * \param     [IN] maxsize     : Specifies the maximum size in bytes of the event buffer on the PC side.
-*                              This parameter might be useful in case the computer has very low RAM. 
+*                              This parameter might be useful in case the computer has very low RAM.
 *                              Normally, though, it is safe to supply 0 as this parameter, so that the library will choose an appropriate value automatically.
 * \return  0 = Success; negative numbers are error codes
 ******************************************************************************/
@@ -1201,7 +1201,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_GetDPP_VirtualProbeName(int probe, ch
 * \brief     Allocate the memory for the event
 *
 * \param     [IN] handle : digitizer handle
-* \param     [IN] Evt: the reference to the Event pointer 
+* \param     [IN] Evt: the reference to the Event pointer
 * \return  0 = Success; negative numbers are error codes
 ******************************************************************************/
 CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_AllocateEvent(int handle, void **Evt);
@@ -1250,7 +1250,7 @@ CAEN_DGTZ_ErrorCode CAENDGTZ_API CAEN_DGTZ_GetTriggerPolarity(int handle, uint32
 
 
 /**************************************************************************//**
-* \brief     Rearm the Interrupt 
+* \brief     Rearm the Interrupt
 *
 * \param     [IN] handle : digitizer handle
 * \return  0 = Success; negative numbers are error codes

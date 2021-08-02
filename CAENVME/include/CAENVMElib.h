@@ -114,7 +114,7 @@ CAENVME_DriverRelease(int32_t Handle, char *Rel);
         -----------------------------------------------------------------------------
         Description:
                 Permits to reset the device.
-                Implemented for A2818, A2719, V2718 on Linux platform only 
+                Implemented for A2818, A2719, V2718 on Linux platform only
 */
 CAENVME_API
 CAENVME_DeviceReset(int32_t dev);
@@ -306,8 +306,8 @@ CAENVME_BLTReadCycle(int32_t Handle, uint32_t Address, void *Buffer,
         -----------------------------------------------------------------------------
         Description:
                 The function performs a VME block transfer read cycle. It can be used to
-                perform MBLT transfers using 64 bit data width. The Address is not 
-                incremented on the VMEBus during the cycle. 
+                perform MBLT transfers using 64 bit data width. The Address is not
+                incremented on the VMEBus during the cycle.
 */
 CAENVME_API
 CAENVME_FIFOBLTReadCycle(int32_t Handle, uint32_t Address, void *Buffer,
@@ -336,7 +336,7 @@ CAENVME_MBLTReadCycle(int32_t Handle, uint32_t Address, void *Buffer,
 
 /*
         Ver. 2.3 - New function
-        
+
         CAENVME_FIFOMBLTReadCycle
         -----------------------------------------------------------------------------
         Parameters:
@@ -352,7 +352,7 @@ CAENVME_MBLTReadCycle(int32_t Handle, uint32_t Address, void *Buffer,
         -----------------------------------------------------------------------------
         Description:
                 The function performs a VME multiplexed block transfer read cycle.
-                The Address is not incremented on the VMEBus during the cycle. 
+                The Address is not incremented on the VMEBus during the cycle.
 */
 CAENVME_API
 CAENVME_FIFOMBLTReadCycle(int32_t Handle, uint32_t Address, void *Buffer,
@@ -428,7 +428,7 @@ CAENVME_MBLTWriteCycle(int32_t Handle, uint32_t Address, void *Buffer,
 
 /*
         Ver. 2.3 - New function
-        
+
         CAENVME_FIFOMBLTWriteCycle
         -----------------------------------------------------------------------------
         Parameters:
