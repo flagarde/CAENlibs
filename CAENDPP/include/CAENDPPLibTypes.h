@@ -1,5 +1,5 @@
 /******************************************************************************
-* 
+*
 * CAEN SpA - Computing Division
 * Via Vetraia, 11 - 55049 - Viareggio ITALY
 * +390594388398 - www.caen.it
@@ -8,9 +8,9 @@
 * \note TERMS OF USE:
 * This program is free software; you can redistribute it and/or modify it under
 * the terms of the GNU General Public License as published by the Free Software
-* Foundation. This program is distributed in the hope that it will be useful, 
-* but WITHOUT ANY WARRANTY; without even the implied warranty of 
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. The user relies on the 
+* Foundation. This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. The user relies on the
 * software, documentation and results solely at his own risk.
 *
 * \file     CAENDigitizerType.h
@@ -61,7 +61,7 @@
 #define MAX_ALTHR_NAME_LEN      (50)            // Max Acquisition Loop thread name
 #define MAX_NUMCHB_COINCIDENCE  (MAX_NUMCHB+1)  // Max number of channels for coincidences (add exteral channel)
 #define MAX_GW                  (1000)          // Max number of generic write register in the Config File
-#define MAX_GPIO_NUM            (2)             
+#define MAX_GPIO_NUM            (2)
 #define DEFAULT_HISTO_NUM       (1)             // Default number of histograms allocated when adding a board
 #define CHANNEL_IDX_ALL         (-1)            // Channel Index to Act an All Channels
 #define HISTO_IDX_CURRENT       (-1)            // Histogram Index to Act on Current Channel Histogram
@@ -72,7 +72,7 @@
 #define IP_ADDR_LEN             (255)
 #define X7GS_RECORDLENGTH       (2040)          // Fixed RecordLength of GammaStream boards
 #define X7GS_PRETRIGGER         (256)           // Fixed Pretrigger of GammaStream boards
-#define MAX_RUNNAME             (128)     
+#define MAX_RUNNAME             (128)
 #define MAX_HVCHB               (2)
 
 /***********************************************************
@@ -137,7 +137,7 @@
 *                  enum types definition                   //
 ***********************************************************/
 typedef enum {
-    CAENDPP_MultiHisto_SoftwareOnly     = 1L,    
+    CAENDPP_MultiHisto_SoftwareOnly     = 1L,
     CAENDPP_MultiHisto_TimeStampReset   = 2L,
 } CAENDPP_MultiHistoCondition_t;
 
@@ -202,7 +202,7 @@ typedef enum {
     CAENDPP_Serial              = 3L,
 } CAENDPP_ConnectionType;
 
-/*! 
+/*!
  * \brief Defines the digitizer model
  */
 typedef enum
@@ -227,7 +227,7 @@ typedef enum
     CAENDPP_DT6000    = 6000L,   // !< \brief The board is Hexagon (NIM)>
 } CAENDPP_BoardModel_t;
 
-/*! 
+/*!
  * \brief Defines the digitizer from factor
  */
 typedef enum {
@@ -237,7 +237,7 @@ typedef enum {
     CAENDPP_FORM_FACTOR_NIM     = 3L,
 } CAENDPP_BoardFormFactor_t;
 
-/*! 
+/*!
  * \brief Defines the digitizer family
  */
 typedef enum {
@@ -251,7 +251,7 @@ typedef enum {
     CAENDPP_XX7GS_FAMILY_CODE  = -2L
 } CAENDPP_BoardFamilyCode_t;
 
-/*! 
+/*!
  * \brief Defines the Major Code for DPP Firmwares
  */
 typedef enum {
@@ -266,7 +266,7 @@ typedef enum {
     CAENDPP_CODE_PHA_XHEX  = 0xFFL, // The code for the DPP-PHA for Hexagon
 } CAENDPP_DPPCode_t;
 
-/*! 
+/*!
  * \brief Defines the digital signals that can be carried by the digital probe 1
  *        in the readout data of the DPP-PHA
  */
@@ -294,7 +294,7 @@ typedef enum {
     CAENDPP_PHA_DigitalProbe1_Inhibit           = 20L,
 } CAENDPP_PHA_DigitalProbe1_t;
 
-/*! 
+/*!
  * \brief Defines the digital signals that can be carried by the digital probe 1
  *        in the readout data of the DPP-PHA
  */
@@ -309,7 +309,7 @@ typedef enum {
     CAENDPP_PHA_DigitalProbe2_Reset = 7L,
 } CAENDPP_PHA_DigitalProbe2_t;
 
-/*! 
+/*!
  * \brief Defines the signals that can be carried by the virtual analog probe 1
  *        in the readout data of the DPP-PHA
  */
@@ -327,7 +327,7 @@ typedef enum {
     //CAENDPP_PHA_VIRTUALPROBE1_Dev2FastTrap      = 10L, // X770 ONLY
 } CAENDPP_PHA_VirtualProbe1_t;
 
-/*! 
+/*!
  * \brief Defines the signals that can be carried by the virtual analog probe 2
  *        in the readout data of the DPP-PHA
  */
@@ -344,7 +344,7 @@ typedef enum {
     CAENDPP_PHA_VIRTUALPROBE2_EnergyOut         = 9L, // X770 ONLY
 } CAENDPP_PHA_VirtualProbe2_t;
 
-/*! 
+/*!
  * \brief Defines the signals that can be used as a trigger for the X770 digital probes
  *        in the readout data of the DPP-PHA
  */
@@ -370,9 +370,9 @@ typedef enum {
 } CAENDPP_IOLevel_t;
 
 typedef enum {
-    CAENDPP_AnalogProbeFirst      = 0L,    
+    CAENDPP_AnalogProbeFirst      = 0L,
     CAENDPP_AnalogProbeSecond     = 1L,
-    CAENDPP_DigitalProbeFirst     = 2L,    
+    CAENDPP_DigitalProbeFirst     = 2L,
     CAENDPP_DigitalProbeSecond    = 3L,
 } CAENDPP_ProbeNumber_t;
 
@@ -452,8 +452,8 @@ typedef enum {
     CAENDPP_InputRange_X64      = 101L, // X7GS
     CAENDPP_InputRange_X128     = 102L, // X7GS
     CAENDPP_InputRange_X256     = 103L, // X7GS
-    
-    CAENDPP_InputRange_UNKN     = -1L, 
+
+    CAENDPP_InputRange_UNKN     = -1L,
 } CAENDPP_InputRange_t;
 
 typedef enum {
@@ -570,9 +570,9 @@ typedef enum {
 typedef enum {
     CAENDPP_OUTSignal_OFF = 0,
     CAENDPP_OUTSignal_Digital_Trigger = 1L,
-    CAENDPP_OUTSignal_Digital_ESample = 2L,		
-    CAENDPP_OUTSignal_Digital_BLSample = 3L,	
-    CAENDPP_OUTSignal_Digital_ResetDetected = 4L,		
+    CAENDPP_OUTSignal_Digital_ESample = 2L,
+    CAENDPP_OUTSignal_Digital_BLSample = 3L,
+    CAENDPP_OUTSignal_Digital_ResetDetected = 4L,
     CAENDPP_OUTSignal_Digital_Running = 5L,
     CAENDPP_OUTSignal_Digital_Saturation = 6L,
     CAENDPP_OUTSignal_Digital_PUR = 7L, // PileUp Rejection
@@ -665,18 +665,18 @@ typedef struct {
                       // 1 For future use
     int32_t energyFilterMode; // 0 trapezoidal
                               // 1 For future use
-    
+
     CAENDPP_InputImpedance_t InputImpedance;
 
     uint32_t CRgain;          // Continuous Reset Analog Gain
     uint32_t TRgain;          // Pulsed Reset Analog Gain
-    
+
     uint32_t SaturationHoldoff;    // Saturation detector holdoff
 
     CAENDPP_GPIOConfig_t GPIOConfig; // GPIO Configuration
 } CAENDPP_ExtraParameters;
 
-/*! 
+/*!
  * \brief DPP parameter structure to be initialized and passed to CAENDPP_SetBoardConfiguration
  * \note1 Only for DPP-PHA
  */
@@ -704,7 +704,7 @@ typedef struct {
 	int32_t trapbsl     [MAX_NUMCHB]; // trapezoid baseline adjuster
     uint32_t pz_dac     [MAX_NUMCHB]; // DAC value used for PoleZero Cancellation
     uint32_t inh_length [MAX_NUMCHB]; // Inhibit length
-    CAENDPP_ExtraParameters X770_extraparameters[MAX_NUMCHB];    //parameters for X770 products only 
+    CAENDPP_ExtraParameters X770_extraparameters[MAX_NUMCHB];    //parameters for X770 products only
 } CAENDPP_PHA_Params_t;
 
 // Connection Config Parameters
@@ -804,14 +804,14 @@ typedef struct {
     int32_t DCoffset[MAX_NUMCHB];
     CAENDPP_TempCorrParams_t TempCorrParameters[MAX_NUMCHB]; // Only for GammaStream
     CAENDPP_INCoupling_t InputCoupling[MAX_NUMCHB]; // Only for Hexagon
-    
+
     int32_t EventAggr;
     CAENDPP_PHA_Params_t DPPParams;
     CAENDPP_IOLevel_t IOlev;
 
     // Waveform Mode Settings, they only affect waveforms acquisition mode
     CAENDPP_WaveformParams_t WFParams;
-    
+
     // List Mode Settings
     CAENDPP_ListParams_t ListParams;
 

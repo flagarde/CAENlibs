@@ -1,5 +1,5 @@
 /******************************************************************************
-* 
+*
 * CAEN SpA - Computing Division
 * Via Vetraia, 11 - 55049 - Viareggio ITALY
 * +390594388398 - www.caen.it
@@ -8,9 +8,9 @@
 * \note TERMS OF USE:
 * This program is free software; you can redistribute it and/or modify it under
 * the terms of the GNU General Public License as published by the Free Software
-* Foundation. This program is distributed in the hope that it will be useful, 
-* but WITHOUT ANY WARRANTY; without even the implied warranty of 
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. The user relies on the 
+* Foundation. This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. The user relies on the
 * software, documentation and results solely at his own risk.
 *
 * \file     CAENDigitizerType.h
@@ -30,7 +30,7 @@
     #include <WinSock2.h>
     #include <windows.h>
     #define CAENDGTZ_API __stdcall
-#else 
+#else
     #include <sys/time.h>
     #include <sys/types.h>
     #include <unistd.h>
@@ -63,12 +63,12 @@
                                                                  // to plot it as an hex number on a string we need
                                                                  // 2 chars for each uint8_t digit, so 8*2=16. With
                                                                  // the trailing NULL char we need 17 chars.
-#endif 
+#endif
 #define MAX_SUPPORTED_PROBES    (16) // The maximum number of probes supported by a trace
 
 
 /******************************************************************************
-* Digitizer Registers Address Map 
+* Digitizer Registers Address Map
 ******************************************************************************/
 
 #define CAEN_DGTZ_MULTI_EVENT_BUFFER                            (0x0000)
@@ -106,7 +106,7 @@
 #define CAEN_DGTZ_SAM_RESET_ACQ_ADD                             (0x105C)
 #define CAEN_DGTZ_SAM_NB_OF_COLS_2_READ_ADD                     (0x1044)
 #define CAEN_DGTZ_SAM_POST_TRIGGER_ADD                          (0x1030)
-#define CAEN_DGTZ_SAM_PULSE_PATTERN_ADD                         (0x1034) 
+#define CAEN_DGTZ_SAM_PULSE_PATTERN_ADD                         (0x1034)
 #define CAEN_DGTZ_SAM_RATE_COUNTERS_CH0                         (0x106C)
 #define CAEN_DGTZ_SAM_RATE_COUNTERS_CH1                         (0x1094)
 
@@ -122,7 +122,7 @@
 #define CAEN_DGTZ_SAM_BROAD_REG_VALUE                           (0x8028)
 #define CAEN_DGTZ_SAM_BROAD_DAC_SPI_DATA_ADD                    (0x8054)
 #define CAEN_DGTZ_SAM_BROAD_CTRL_ADD                            (0x8070)
-#define CAEN_DGTZ_SAM_BROAD_PRETRIGGER_ADD                      (0x8074) 
+#define CAEN_DGTZ_SAM_BROAD_PRETRIGGER_ADD                      (0x8074)
 #define CAEN_DGTZ_SAM_BROAD_START_ACQ_ADD                       (0x8018)
 #define CAEN_DGTZ_SAM_BROAD_RESET_ACQ_ADD                       (0x805C)
 #define CAEN_DGTZ_DECIMATION_ADD				                (0x8044)
@@ -139,13 +139,13 @@
 #define CAEN_DGTZ_SW_TRIGGER_ADD                                (0x8108)
 #define CAEN_DGTZ_TRIGGER_SRC_ENABLE_ADD                        (0x810C)
 #define CAEN_DGTZ_FP_TRIGGER_OUT_ENABLE_ADD                     (0x8110)
-#define CAEN_DGTZ_POST_TRIG_ADD                                 (0x8114)               
+#define CAEN_DGTZ_POST_TRIG_ADD                                 (0x8114)
 #define CAEN_DGTZ_FRONT_PANEL_IO_ADD                            (0x8118)
-#define CAEN_DGTZ_FRONT_PANEL_IO_CTRL_ADD                       (0x811C)       
-#define CAEN_DGTZ_CH_ENABLE_ADD                                 (0x8120)            
-#define CAEN_DGTZ_FW_REV_ADD                                    (0x8124)           
-#define CAEN_DGTZ_DOWNSAMPLE_FACT_ADD                           (0x8128)               
-#define CAEN_DGTZ_EVENT_STORED_ADD                              (0x812C)        
+#define CAEN_DGTZ_FRONT_PANEL_IO_CTRL_ADD                       (0x811C)
+#define CAEN_DGTZ_CH_ENABLE_ADD                                 (0x8120)
+#define CAEN_DGTZ_FW_REV_ADD                                    (0x8124)
+#define CAEN_DGTZ_DOWNSAMPLE_FACT_ADD                           (0x8128)
+#define CAEN_DGTZ_EVENT_STORED_ADD                              (0x812C)
 #define CAEN_DGTZ_MON_SET_ADD                                   (0x8138)
 #define CAEN_DGTZ_SYNC_CMD                                      (0x813C)
 #define CAEN_DGTZ_BOARD_INFO_ADD                                (0x8140)
@@ -154,7 +154,7 @@
 #define CAEN_DGTZ_ANALOG_MON_ADD                                (0x8150)
 #define CAEN_DGTZ_TRIGGER_VETO_ADD                              (0x817C)
 
-#define CAEN_DGTZ_VME_CONTROL_ADD                               (0xEF00)                
+#define CAEN_DGTZ_VME_CONTROL_ADD                               (0xEF00)
 #define CAEN_DGTZ_VME_STATUS_ADD                                (0xEF04)
 #define CAEN_DGTZ_BOARD_ID_ADD                                  (0xEF08)
 #define CAEN_DGTZ_MCST_CBLT_ADD_CTRL_ADD                        (0xEF0C)
@@ -195,8 +195,8 @@
 
 
 // INDIVIDUAL CHANNEL ADDRESSING
-#define CAEN_DGTZ_InputDCOffsetReg_Ch(x)      (0x1098 | ((x)<<8)) ///< Input DC offset adjust Register Indiv. Address 
-#define CAEN_DGTZ_ChannelFWRevisionReg_Ch(x)  (0x108C | ((x)<<8)) ///< Channel FW Revision Register Indiv. Address 
+#define CAEN_DGTZ_InputDCOffsetReg_Ch(x)      (0x1098 | ((x)<<8)) ///< Input DC offset adjust Register Indiv. Address
+#define CAEN_DGTZ_ChannelFWRevisionReg_Ch(x)  (0x108C | ((x)<<8)) ///< Channel FW Revision Register Indiv. Address
 #define CAEN_DGTZ_DPP1Reg_Ch(x)               (0x1024 | ((x)<<8)) ///< DPP1 Param Register Indiv. Address
 #define CAEN_DGTZ_DPP2Reg_Ch(x)               (0x1028 | ((x)<<8)) ///< DPP2 Param Register Indiv. Address
 #define CAEN_DGTZ_DPP3Reg_Ch(x)               (0x102C | ((x)<<8)) ///< DPP3 Param Register Indiv. Address
@@ -246,8 +246,8 @@ CAEN_DGTZ_InvalidEvent                  = -21L,   /* The vent is invalid        
 CAEN_DGTZ_OutOfMemory                   = -22L,   /* Out of memory                                    */
 CAEN_DGTZ_CalibrationError              = -23L,   /* Unable to calibrate the board                    */
 CAEN_DGTZ_DigitizerNotFound             = -24L,   /* Unable to open the digitizer                    */
-CAEN_DGTZ_DigitizerAlreadyOpen          = -25L,   /* The Digitizer is already open                    */    
-CAEN_DGTZ_DigitizerNotReady             = -26L,   /* The Digitizer is not ready to operate            */    
+CAEN_DGTZ_DigitizerAlreadyOpen          = -25L,   /* The Digitizer is already open                    */
+CAEN_DGTZ_DigitizerNotReady             = -26L,   /* The Digitizer is not ready to operate            */
 CAEN_DGTZ_InterruptNotConfigured        = -27L,   /* The Digitizer has not the IRQ configured            */
 CAEN_DGTZ_DigitizerMemoryCorrupted      = -28L,   /* The digitizer flash memory is corrupted        */
 CAEN_DGTZ_DPPFirmwareNotSupported       = -29L,   /* The digitizer dpp firmware is not supported in this lib version */
@@ -255,11 +255,11 @@ CAEN_DGTZ_InvalidLicense                = -30L,   /* Invalid Firmware License */
 CAEN_DGTZ_InvalidDigitizerStatus        = -31L,   /* The digitizer is found in a corrupted status */
 CAEN_DGTZ_UnsupportedTrace              = -32L,   /* The given trace is not supported by the digitizer */
 CAEN_DGTZ_InvalidProbe                  = -33L,   /* The given probe is not supported for the given digitizer's trace */
-CAEN_DGTZ_UnsupportedBaseAddress		= -34L,   /*  The Base Address is not supported, it's a Desktop device?		*/ 
+CAEN_DGTZ_UnsupportedBaseAddress		= -34L,   /*  The Base Address is not supported, it's a Desktop device?		*/
 
 CAEN_DGTZ_NotYetImplemented             = -99L,   /* The function is not yet implemented            */
 
-}CAEN_DGTZ_ErrorCode; 
+}CAEN_DGTZ_ErrorCode;
 
 #define CAEN_DGTZ_MAX_CHANNEL   MAX_V1730_CHANNEL_SIZE  /*!< \brief The number of channels */
 
@@ -343,7 +343,7 @@ typedef enum {
     CAEN_DGTZ_XX720_FAMILY_CODE  = 3L,
     CAEN_DGTZ_XX740_FAMILY_CODE  = 4L,
     CAEN_DGTZ_XX751_FAMILY_CODE  = 5L,
-    CAEN_DGTZ_XX742_FAMILY_CODE  = 6L, 
+    CAEN_DGTZ_XX742_FAMILY_CODE  = 6L,
     CAEN_DGTZ_XX780_FAMILY_CODE  = 7L,
     CAEN_DGTZ_XX761_FAMILY_CODE  = 8L,
     CAEN_DGTZ_XX743_FAMILY_CODE  = 9L,
@@ -403,8 +403,8 @@ typedef enum {
     CAEN_DGTZ_BUSY                     = 3L,
     CAEN_DGTZ_CLK_OUT                  = 4L,
     CAEN_DGTZ_RUN                      = 5L,
-    CAEN_DGTZ_TRGPULSE                 = 6L,    
-    CAEN_DGTZ_OVERTHRESHOLD            = 7L,                    
+    CAEN_DGTZ_TRGPULSE                 = 6L,
+    CAEN_DGTZ_OVERTHRESHOLD            = 7L,
 } CAEN_DGTZ_OutputSignalMode_t;
 
 typedef enum
@@ -421,11 +421,11 @@ typedef enum
     CAEN_DGTZ_DISABLE                  = 0L,
 } CAEN_DGTZ_EnaDis_t;
 
-typedef enum 
+typedef enum
 {
     CAEN_DGTZ_ZS_FINE                  = 0L,
     CAEN_DGTZ_ZS_COARSE                = 1L,
-}CAEN_DGTZ_ThresholdWeight_t;            
+}CAEN_DGTZ_ThresholdWeight_t;
 
 
 typedef enum
@@ -445,22 +445,22 @@ typedef enum
     CAEN_DGTZ_AM_VOLTAGE_LEVEL         = 4L,
 }CAEN_DGTZ_AnalogMonitorOutputMode_t;
 
-typedef enum 
+typedef enum
 {
     CAEN_DGTZ_AM_MAGNIFY_1X            = 0L,
     CAEN_DGTZ_AM_MAGNIFY_2X            = 1L,
     CAEN_DGTZ_AM_MAGNIFY_4X            = 2L,
     CAEN_DGTZ_AM_MAGNIFY_8X            = 3L,
-}CAEN_DGTZ_AnalogMonitorMagnify_t;            
+}CAEN_DGTZ_AnalogMonitorMagnify_t;
 
 
-typedef enum 
+typedef enum
 {
     CAEN_DGTZ_AM_INSPECTORINVERTER_P_1X  = 0L,
     CAEN_DGTZ_AM_INSPECTORINVERTER_N_1X  = 1L,
 }CAEN_DGTZ_AnalogMonitorInspectorInverter_t;
 
-typedef enum 
+typedef enum
 {
     CAEN_DGTZ_IRQ_MODE_RORA            = 0L,
     CAEN_DGTZ_IRQ_MODE_ROAK            = 1L,
@@ -474,7 +474,7 @@ typedef enum
     CAEN_DGTZ_IRQ_ENABLED_VME_ROAK     = 2L,
 } CAEN_DGTZ_IRQState_t;
 
-typedef enum 
+typedef enum
 {
     CAEN_DGTZ_SLAVE_TERMINATED_READOUT_MBLT      = 0L,
     CAEN_DGTZ_SLAVE_TERMINATED_READOUT_2eVME     = 1L,
@@ -510,7 +510,7 @@ typedef enum {
     CAEN_DGTZ_DPP_Channel_ALL                  = 255L,
 } CAEN_DGTZ_DPP_Channel_t;
 
-/*! 
+/*!
  * \brief Defines whether to include an additional virtual analog probe in the readout data
  *        at the cost of halving the resolution of the first
  */
@@ -520,7 +520,7 @@ typedef enum
     CAEN_DGTZ_DPP_VIRTUALPROBE_DUAL          = 1L,
 } CAEN_DGTZ_DPP_VirtualProbe_t;
 
-/*! 
+/*!
  * \brief Defines the digital signals that can be carried by the digital probe
  *        in the readout data of the DPP-PHA
  */
@@ -540,7 +540,7 @@ typedef enum
     CAEN_DGTZ_DPP_PHA_DIGITAL_PROBE_ExtTRG      = 11L,
 } CAEN_DGTZ_DPP_PHA_DigitalProbe_t;
 
-/*! 
+/*!
  * \brief Defines the signals that can be carried by the virtual analog probe 1
  *        in the readout data of the DPP-PHA
  */
@@ -551,8 +551,8 @@ typedef enum
     CAEN_DGTZ_DPP_PHA_VIRTUALPROBE1_Delta2       = 2L,
     CAEN_DGTZ_DPP_PHA_VIRTUALPROBE1_trapezoid    = 3L,
 } CAEN_DGTZ_DPP_PHA_VirtualProbe1_t;
-  
-/*! 
+
+/*!
  * \brief Defines the signals that can be carried by the virtual analog probe 2
  *        in the readout data of the DPP-PHA
  */
@@ -566,7 +566,7 @@ typedef enum
 } CAEN_DGTZ_DPP_PHA_VirtualProbe2_t;
 
 
-/*! 
+/*!
  * \brief Defines the signals that can be carried by the virtual analog probe
  *        in the readout data of the DPP-CI version 2
  */
@@ -575,7 +575,7 @@ typedef enum
     CAEN_DGTZ_DPP_CI_VIRTUALPROBE_Baseline = 0L,
 } CAEN_DGTZ_DPP_CI_VirtualProbe_t;
 
-/*! 
+/*!
  * \brief Defines the signals that can be carried by the digital probe 1
  *        in the readout data of the DPP-CI version 2
  */
@@ -610,7 +610,7 @@ typedef enum
     CAEN_DGTZ_DPP_CI_DIGITALPROBE1_R22_Coincidence  = 9L,
 } CAEN_DGTZ_DPP_CI_DigitalProbe1_t;
 
-/*! 
+/*!
  * \brief Defines the signals that can be carried by the digital probe 2
  *        in the readout data of the DPP-CI version 2
  */
@@ -644,7 +644,7 @@ typedef enum
     CAEN_DGTZ_DPP_CI_DIGITALPROBE2_R22_Coincidence  = 9L,
 } CAEN_DGTZ_DPP_CI_DigitalProbe2_t;
 
-/*! 
+/*!
  * \brief Defines the signals that can be carried by the virtual analog probe
  *        in the readout data of the DPP-PSD
  */
@@ -654,7 +654,7 @@ typedef enum
     CAEN_DGTZ_DPP_PSD_VIRTUALPROBE_Threshold    = 1L,
 } CAEN_DGTZ_DPP_PSD_VirtualProbe_t;
 
-/*! 
+/*!
  * \brief Defines the signals that can be carried by the digital probe 1
  *        in the readout data of the DPP-PSD
  */
@@ -670,7 +670,7 @@ typedef enum
     *  the name.                                                *
     *  WARNING WARNING WARNING WARNING WARNING WARNING WARNING  *
     ************************************************************/
-    
+
     /* x720 Digital Probes Types */
     CAEN_DGTZ_DPP_PSD_DIGITALPROBE1_Armed           = 0L,
     CAEN_DGTZ_DPP_PSD_DIGITALPROBE1_Trigger         = 1L,
@@ -701,10 +701,10 @@ typedef enum
     CAEN_DGTZ_DPP_PSD_DIGITALPROBE1_R6_CoincWin     = 14L,
     CAEN_DGTZ_DPP_PSD_DIGITALPROBE1_R6_PileUp       = 15L,
     CAEN_DGTZ_DPP_PSD_DIGITALPROBE1_R6_Coincidence  = 16L,
-    CAEN_DGTZ_DPP_PSD_DIGITALPROBE1_R6_GateLong     = 17L, 
+    CAEN_DGTZ_DPP_PSD_DIGITALPROBE1_R6_GateLong     = 17L,
 } CAEN_DGTZ_DPP_PSD_DigitalProbe1_t;
 
-/*! 
+/*!
  * \brief Defines the signals that can be carried by the digital probe 2
  *        in the readout data of the DPP-PSD
  */
@@ -796,7 +796,7 @@ typedef enum
 #define CAEN_DGTZ_DPP_DIGITALPROBE_PrgVeto (31)
 
 
-/*! 
+/*!
  * \brief Defines the kind of histogram data returned in readout data
  */
 typedef enum
@@ -817,7 +817,7 @@ typedef enum {
     CAEN_DGTZ_DRS4_5GHz         = 0L,
     CAEN_DGTZ_DRS4_2_5GHz       = 1L,
     CAEN_DGTZ_DRS4_1GHz         = 2L,
-    CAEN_DGTZ_DRS4_750MHz       = 3L, 
+    CAEN_DGTZ_DRS4_750MHz       = 3L,
     _CAEN_DGTZ_DRS4_COUNT_      = 4L,
 } CAEN_DGTZ_DRS4Frequency_t;
 
@@ -827,7 +827,7 @@ typedef enum {
     CAEN_DGTZ_SAM_800MHz        = 2L,
     CAEN_DGTZ_SAM_400MHz        = 3L,
 } CAEN_DGTZ_SAMFrequency_t;
-/*! 
+/*!
  * \brief Defines the available synchronization modes to be set with CAEN_DGTZ_SetDPPRunSynchronizationMode
  */
 typedef enum {
@@ -856,7 +856,7 @@ typedef enum {
 } CAEN_DGTZ_SAMPulseSourceType_t;
 
 typedef enum  {
-    CAEN_DGTZ_AcquisitionMode_STANDARD    = 0,    
+    CAEN_DGTZ_AcquisitionMode_STANDARD    = 0,
     CAEN_DGTZ_AcquisitionMode_DPP_CI      = 1,
 } CAEN_DGTZ_AcquisitionMode_t ;
 
@@ -884,7 +884,7 @@ typedef struct {
     char                        License[MAX_LICENSE_LENGTH];
 } CAEN_DGTZ_BoardInfo_t;
 
-typedef struct 
+typedef struct
 {
     uint32_t             EventSize;
     uint32_t             BoardId;
@@ -894,17 +894,17 @@ typedef struct
     uint32_t             TriggerTimeTag;
 } CAEN_DGTZ_EventInfo_t;
 
-typedef struct 
+typedef struct
 {
-    uint32_t                 ChSize[MAX_X742_CHANNEL_SIZE];           // the number of samples stored in DataChannel array  
+    uint32_t                 ChSize[MAX_X742_CHANNEL_SIZE];           // the number of samples stored in DataChannel array
     float                    *DataChannel[MAX_X742_CHANNEL_SIZE];     // the array of ChSize samples
     uint32_t                 TriggerTimeTag;
     uint16_t                 StartIndexCell;
 } CAEN_DGTZ_X742_GROUP_t;
 
-typedef struct 
+typedef struct
 {
-    uint32_t                 ChSize;                                      // the number of samples stored in DataChannel array  
+    uint32_t                 ChSize;                                      // the number of samples stored in DataChannel array
     float                    *DataChannel[MAX_X743_CHANNELS_X_GROUP];     // the array of ChSize samples
     uint16_t                 TriggerCount[MAX_X743_CHANNELS_X_GROUP];
     uint16_t                 TimeCount[MAX_X743_CHANNELS_X_GROUP];
@@ -920,47 +920,47 @@ typedef struct
 
 } CAEN_DGTZ_X743_GROUP_t;
 
-typedef struct 
+typedef struct
 {
-    uint32_t            ChSize[MAX_UINT16_CHANNEL_SIZE];       // the number of samples stored in DataChannel array  
+    uint32_t            ChSize[MAX_UINT16_CHANNEL_SIZE];       // the number of samples stored in DataChannel array
     uint16_t            *DataChannel[MAX_UINT16_CHANNEL_SIZE]; // the array of ChSize samples
 } CAEN_DGTZ_UINT16_EVENT_t;
 
-typedef struct 
+typedef struct
 {
-    uint32_t            ChSize[MAX_UINT8_CHANNEL_SIZE];           // the number of samples stored in DataChannel array  
+    uint32_t            ChSize[MAX_UINT8_CHANNEL_SIZE];           // the number of samples stored in DataChannel array
     uint8_t                *DataChannel[MAX_UINT8_CHANNEL_SIZE];  // the array of ChSize samples
 } CAEN_DGTZ_UINT8_EVENT_t;
 
-typedef struct 
+typedef struct
 {
-    uint8_t                    GrPresent[MAX_X742_GROUP_SIZE]; // If the group has data the value is 1 otherwise is 0  
+    uint8_t                    GrPresent[MAX_X742_GROUP_SIZE]; // If the group has data the value is 1 otherwise is 0
     CAEN_DGTZ_X742_GROUP_t    DataGroup[MAX_X742_GROUP_SIZE]; // the array of ChSize samples
 } CAEN_DGTZ_X742_EVENT_t;
 
-typedef struct 
+typedef struct
 {
-    uint8_t                   GrPresent[MAX_V1743_GROUP_SIZE]; // If the group has data the value is 1 otherwise is 0  
+    uint8_t                   GrPresent[MAX_V1743_GROUP_SIZE]; // If the group has data the value is 1 otherwise is 0
     CAEN_DGTZ_X743_GROUP_t    DataGroup[MAX_V1743_GROUP_SIZE]; // the array of ChSize samples
 } CAEN_DGTZ_X743_EVENT_t;
 
-/*! 
+/*!
  * \brief Event type for DPP-PHA to be used within the <b>new readout API</b>
  */
-typedef struct 
+typedef struct
 {
     uint32_t Format;
     uint64_t TimeTag;
     uint16_t Energy;
     int16_t Extras;
-    uint32_t *Waveforms; /*!< pointer to coded data inside the readout buffer. only meant to be supplied to CAEN_DGTZ_DecodeDPPWaveforms */ 
+    uint32_t *Waveforms; /*!< pointer to coded data inside the readout buffer. only meant to be supplied to CAEN_DGTZ_DecodeDPPWaveforms */
     uint32_t Extras2;
 } CAEN_DGTZ_DPP_PHA_Event_t;
 
-/*! 
+/*!
  * \brief Event type for DPP-PSD to be used within the <b>new readout API</b>
  */
-typedef struct 
+typedef struct
 {
     uint32_t Format;
     uint32_t Format2;
@@ -969,20 +969,20 @@ typedef struct
     int16_t ChargeLong;
     int16_t Baseline;
     int16_t Pur;
-    uint32_t *Waveforms; /*!< pointer to coded data inside the readout buffer. only meant to be supplied to CAEN_DGTZ_DecodeDPPWaveforms */ 
+    uint32_t *Waveforms; /*!< pointer to coded data inside the readout buffer. only meant to be supplied to CAEN_DGTZ_DecodeDPPWaveforms */
     uint32_t Extras;
 } CAEN_DGTZ_DPP_PSD_Event_t;
 
-/*! 
+/*!
  * \brief Event type for DPP-CI v2 to be used within the <b>new readout API</b>
  */
-typedef struct 
+typedef struct
 {
     uint32_t Format;
     uint32_t TimeTag;
     int16_t Charge;
     int16_t Baseline;
-    uint32_t *Waveforms; /*!< pointer to coded data inside the readout buffer. only meant to be supplied to CAEN_DGTZ_DecodeDPPWaveforms */ 
+    uint32_t *Waveforms; /*!< pointer to coded data inside the readout buffer. only meant to be supplied to CAEN_DGTZ_DecodeDPPWaveforms */
 } CAEN_DGTZ_DPP_CI_Event_t;
 
 /*!
@@ -998,15 +998,15 @@ typedef struct
 	uint16_t Pur;
 	uint16_t Overrange;
 	uint16_t SubChannel;
-	uint32_t *Waveforms; 
+	uint32_t *Waveforms;
 	uint32_t Extras;
 } CAEN_DGTZ_DPP_QDC_Event_t;
 
 
-/*! 
+/*!
  * \brief Event type for 751 ZLE to be used within the <b>new readout API</b>
  */
-typedef struct 
+typedef struct
 {
     uint32_t timeTag;
     uint32_t baseline;
@@ -1025,7 +1025,7 @@ typedef struct
 {
 	uint32_t fifo_full;
 	uint32_t size_wrd;
-	uint32_t baseline;				   
+	uint32_t baseline;
 	uint32_t *DataPtr;
 	CAEN_DGTZ_730_ZLE_Waveforms_t *Waveforms;
 } CAEN_DGTZ_730_ZLE_Channel_t;
@@ -1035,7 +1035,7 @@ typedef struct
 	uint32_t size;
 	uint16_t chmask;
 	uint32_t tcounter;
-	uint64_t timeStamp;				   
+	uint64_t timeStamp;
 	CAEN_DGTZ_730_ZLE_Channel_t *Channel[MAX_V1730_CHANNEL_SIZE];
 
 } CAEN_DGTZ_730_ZLE_Event_t;
@@ -1052,7 +1052,7 @@ typedef struct
 	uint32_t size;
 	uint64_t timeStamp;
 	uint16_t baseline;
-	uint16_t *DataPtr; 
+	uint16_t *DataPtr;
 	CAEN_DGTZ_730_DAW_Waveforms_t *Waveforms; // Waveform coincides with raw data for DAW, used for uniformity with other firmwares
 } CAEN_DGTZ_730_DAW_Channel_t;
 
@@ -1067,16 +1067,16 @@ typedef struct
 
 
 
-typedef struct 
+typedef struct
 {
     float   Charge; // in pico-Coulombs :  array of ChSize samples
     int     StartIndexCell;
 } CAEN_DGTZ_DPP_X743_Event_t;
 
-/*! 
+/*!
  * \brief Waveform type for DPP-PHA to be used within the <b>new readout API</b>
  */
-typedef struct 
+typedef struct
 {
     uint32_t Ns;
     uint8_t  DualTrace;
@@ -1089,7 +1089,7 @@ typedef struct
     uint8_t  *DTrace2;
 } CAEN_DGTZ_DPP_PHA_Waveforms_t;
 
-/*! 
+/*!
  * \brief Waveform type for DPP-PSD to be used within the <b>new readout API</b>
  */
 typedef struct
@@ -1108,7 +1108,7 @@ typedef struct
 } CAEN_DGTZ_DPP_PSD_Waveforms_t;
 
 
-/*! 
+/*!
  * \brief Waveform type for 751ZLE to be used within the <b>new readout API</b>
  */
 typedef struct
@@ -1137,7 +1137,7 @@ typedef struct
 
 #define CAEN_DGTZ_AutoAggregation 0
 
-/*! 
+/*!
  * \brief Defines the Pile Up Rejection method
  * \note Only for DPP-PSD and DPP-CI version 2
  */
@@ -1156,7 +1156,7 @@ typedef enum
 } CAEN_DGTZ_DPP_Discrimination_t;
 
 
-/*! 
+/*!
  * \brief Defines the trigger mode to be set with CAEN_DGTZ_SetDPPTriggerMode
  * \note Only for DPP-PSD and DPP-CI version 2
  */
@@ -1166,7 +1166,7 @@ typedef enum
     CAEN_DGTZ_DPP_TriggerMode_Coincidence
 } CAEN_DGTZ_DPP_TriggerMode_t;
 
-/*! 
+/*!
  * \brief Defines the trigger configuration to be set with CAEN_DGTZ_SetDPPTriggerConfig
  * \note Only for DPP-PSD and DPP-CI version 2
  */
@@ -1177,7 +1177,7 @@ typedef enum
 } CAEN_DGTZ_DPP_TriggerConfig_t;
 
 
-typedef enum 
+typedef enum
 {
     CAEN_DGTZ_DPPFirmware_PHA,
     CAEN_DGTZ_DPPFirmware_PSD,
@@ -1188,7 +1188,7 @@ typedef enum
     CAEN_DGTZ_NotDPPFirmware = -1
 } CAEN_DGTZ_DPPFirmware_t;
 
-/*! 
+/*!
  * \brief DPP parameter structure to be initialized and passed to CAEN_DGTZ_SetDPPParameters
  * \note1 Only for DPP-PHA
  */
@@ -1205,9 +1205,9 @@ typedef struct
     int nspk        [MAX_DPP_PHA_CHANNEL_SIZE]; // Number of Samples for Peak Mean Calculation
     int pkho        [MAX_DPP_PHA_CHANNEL_SIZE]; // Peak Hold Off
     int blho        [MAX_DPP_PHA_CHANNEL_SIZE]; // Base Line Hold Off
-    int otrej       [MAX_DPP_PHA_CHANNEL_SIZE]; // 
+    int otrej       [MAX_DPP_PHA_CHANNEL_SIZE]; //
     int trgho       [MAX_DPP_PHA_CHANNEL_SIZE]; // Trigger Hold Off
-    int twwdt       [MAX_DPP_PHA_CHANNEL_SIZE]; // 
+    int twwdt       [MAX_DPP_PHA_CHANNEL_SIZE]; //
     int trgwin      [MAX_DPP_PHA_CHANNEL_SIZE]; //
     int dgain       [MAX_DPP_PHA_CHANNEL_SIZE]; // Digital Probe Gain
     float enf       [MAX_DPP_PHA_CHANNEL_SIZE]; // Energy Nomralization Factor
@@ -1220,7 +1220,7 @@ typedef struct
     int trapbsl     [MAX_DPP_PHA_CHANNEL_SIZE]; // trapezoid baseline adjuster
 } CAEN_DGTZ_DPP_PHA_Params_t;
 
-/*! 
+/*!
  * \brief DPP parameter structure to be initialized and passed to CAEN_DGTZ_SetDPPParameters
  * \note Only for DPP-PSD
  */
@@ -1241,12 +1241,12 @@ typedef struct {
 	int cfdd		[MAX_DPP_PSD_CHANNEL_SIZE]; //only for FW > 132.32
     CAEN_DGTZ_DPP_TriggerConfig_t trgc // Ignored for x751
                     [MAX_DPP_PSD_CHANNEL_SIZE];
-    CAEN_DGTZ_DPP_PUR_t purh; 
+    CAEN_DGTZ_DPP_PUR_t purh;
     int purgap; // Ignored for x751
 } CAEN_DGTZ_DPP_PSD_Params_t;
 
 
-/*! 
+/*!
  * \brief DPP parameter structure to be initialized and passed to CAEN_DGTZ_SetDPPParameters
  * \note Only for DPP-CI version 2
  */
@@ -1324,4 +1324,3 @@ typedef enum {
 } CAEN_DGTZ_SAM_CORRECTION_LEVEL_t;
 
 #endif
-

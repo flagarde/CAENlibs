@@ -1,5 +1,5 @@
 /******************************************************************************
-* 
+*
 * CAEN SpA - Computing Division
 * Via Vetraia, 11 - 55049 - Viareggio ITALY
 * +390594388398 - www.caen.it
@@ -8,9 +8,9 @@
 * \note TERMS OF USE:
 * This program is free software; you can redistribute it and/or modify it under
 * the terms of the GNU General Public License as published by the Free Software
-* Foundation. This program is distributed in the hope that it will be useful, 
-* but WITHOUT ANY WARRANTY; without even the implied warranty of 
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. The user relies on the 
+* Foundation. This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. The user relies on the
 * software, documentation and results solely at his own risk.
 *
 * \file     CAENDigitizerType.h
@@ -347,12 +347,12 @@ int32_t CAENDPP_API CAENDPP_GetWaveform(int32_t handle, int32_t channel, int16_t
 
 - [IN] handle       : the handle of the opened DPP
 - [IN] channel         : the number of the channel
-- [IN] histoIndex    : the index of the stored histogram to get 
+- [IN] histoIndex    : the index of the stored histogram to get
                     (the most recent histogram has the index of available spectra - 1)
-- [OUT] histo        : the requested histogram        
+- [OUT] histo        : the requested histogram
 - [OUT] counts        : the number of counts in the histogram
 - [OUT] realTime_ns    : the real time expressed in nanoseconds of the histogram
-- [OUT] deadTime_ns    : the dead time expressed in nanoseconds of the histogram                    
+- [OUT] deadTime_ns    : the dead time expressed in nanoseconds of the histogram
 
 - return : 0 for success otherwise an error code.
 */
@@ -369,7 +369,7 @@ int32_t CAENDPP_API CAENDPP_GetHistogram(int32_t handle, int32_t channel, int32_
 - [IN] histo        : the histogram    to store
 - [IN] nbins        : the number of bins in the histogram
 - [IN] realTime_ns    : the real time expressed in nanoseconds of the histogram
-- [IN] deadTime_ns    : the dead time expressed in nanoseconds of the histogram                    
+- [IN] deadTime_ns    : the dead time expressed in nanoseconds of the histogram
 
 - return : 0 for success otherwise an error code.
 */
@@ -381,10 +381,10 @@ int32_t CAENDPP_API CAENDPP_SetHistogram(int32_t handle, int32_t channel, int32_
 
 - [IN] handle       : the handle of the opened DPP
 - [IN] channel         : the number of the channel
-- [OUT] histo        : the requested histogram        
+- [OUT] histo        : the requested histogram
 - [OUT] counts        : the number of counts in the histogram
 - [OUT] realTime_ns    : the real time expressed in nanoseconds of the histogram
-- [OUT] deadTime_ns    : the dead time expressed in nanoseconds of the histogram                    
+- [OUT] deadTime_ns    : the dead time expressed in nanoseconds of the histogram
 - [OUT] AcqStatus    : the Acquisition Status of the specified channel.
 - return : 0 for success otherwise an error code.
 */

@@ -15,13 +15,13 @@ endif()
 add_custom_target(COPY_CAENDPP)
 if(WIN32 OR MSYS)
   file(MAKE_DIRECTORY "${CMAKE_INSTALL_FULL_LIBDIR}")
-  add_custom_command(TARGET COPY_CAENDPP 
-                     COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENDPPLib.lib" "${CMAKE_INSTALL_FULL_LIBDIR}/CAENDPPLib.lib" 
-                     COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENDPPLib.dll" "${CMAKE_INSTALL_FULL_BINDIR}/CAENDPPLib.dll" 
+  add_custom_command(TARGET COPY_CAENDPP
+                     COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENDPPLib.lib" "${CMAKE_INSTALL_FULL_LIBDIR}/CAENDPPLib.lib"
+                     COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENDPPLib.dll" "${CMAKE_INSTALL_FULL_BINDIR}/CAENDPPLib.dll"
                      BYPRODUCTS "${CMAKE_INSTALL_FULL_LIBDIR}/CAENDPPLib.lib")
 else()
-  add_custom_command(TARGET COPY_CAENDPP 
-                     COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/libCAENDPPLib.so" "${CMAKE_INSTALL_FULL_LIBDIR}/libCAENDPPLib.so" 
+  add_custom_command(TARGET COPY_CAENDPP
+                     COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/libCAENDPPLib.so" "${CMAKE_INSTALL_FULL_LIBDIR}/libCAENDPPLib.so"
                      BYPRODUCTS "${CMAKE_INSTALL_FULL_LIBDIR}/libCAENDPPLib.so")
 endif()
 

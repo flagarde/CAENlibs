@@ -15,13 +15,13 @@ endif()
 add_custom_target(COPY_CAENHV)
 if(WIN32 OR MSYS)
   file(MAKE_DIRECTORY "${CMAKE_INSTALL_FULL_LIBDIR}")
-  add_custom_command(TARGET COPY_CAENHV 
-                     COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENHVWrapper.lib" "${CMAKE_INSTALL_FULL_LIBDIR}/CAENHVWrapper.lib" 
-                    COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENHVWrapper.dll" "${CMAKE_INSTALL_FULL_BINDIR}/CAENHVWrapper.dll" 
+  add_custom_command(TARGET COPY_CAENHV
+                     COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENHVWrapper.lib" "${CMAKE_INSTALL_FULL_LIBDIR}/CAENHVWrapper.lib"
+                    COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENHVWrapper.dll" "${CMAKE_INSTALL_FULL_BINDIR}/CAENHVWrapper.dll"
                      BYPRODUCTS "${CMAKE_INSTALL_FULL_LIBDIR}/CAENHVWrapper.lib")
 else()
-  add_custom_command(TARGET COPY_CAENHV 
-                     COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/libcaenhvwrapper.so" "${CMAKE_INSTALL_FULL_LIBDIR}/libcaenhvwrapper.so" 
+  add_custom_command(TARGET COPY_CAENHV
+                     COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/libcaenhvwrapper.so" "${CMAKE_INSTALL_FULL_LIBDIR}/libcaenhvwrapper.so"
                      BYPRODUCTS "${CMAKE_INSTALL_FULL_LIBDIR}/libcaenhvwrapper.so")
 endif()
 

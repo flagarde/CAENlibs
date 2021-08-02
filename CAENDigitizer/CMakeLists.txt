@@ -9,13 +9,13 @@ endif()
 add_custom_target(COPY_CAENDigitizer)
 if(WIN32 OR MSYS)
   file(MAKE_DIRECTORY "${CMAKE_INSTALL_FULL_LIBDIR}")
-  add_custom_command(TARGET COPY_CAENDigitizer 
-                     COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENDigitizer.lib" "${CMAKE_INSTALL_FULL_LIBDIR}/CAENDigitizer.lib" 
+  add_custom_command(TARGET COPY_CAENDigitizer
+                     COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENDigitizer.lib" "${CMAKE_INSTALL_FULL_LIBDIR}/CAENDigitizer.lib"
                      COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/CAENDigitizer.dll" "${CMAKE_INSTALL_FULL_BINDIR}/CAENDigitizer.dll"
                      BYPRODUCTS "${CMAKE_INSTALL_FULL_LIBDIR}/CAENDigitizer.lib;${CMAKE_INSTALL_FULL_BINDIR}/CAENDigitizer.dll")
 else()
-  add_custom_command(TARGET COPY_CAENDigitizer 
-                     COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/libCAENDigitizer.so" "${CMAKE_INSTALL_FULL_LIBDIR}/libCAENDigitizer.so" 
+  add_custom_command(TARGET COPY_CAENDigitizer
+                     COMMAND ${CMAKE_COMMAND} -E copy "${LIBRARY_PATH}/libCAENDigitizer.so" "${CMAKE_INSTALL_FULL_LIBDIR}/libCAENDigitizer.so"
                      BYPRODUCTS "${CMAKE_INSTALL_FULL_LIBDIR}/libCAENDigitizer.so")
 endif()
 

@@ -6,7 +6,7 @@
 /*                                                                         */
 /*                                                                         */
 /*    Source code written in ANSI C                                        */
-/*                                                                         */ 
+/*                                                                         */
 /*    Created:  July 2011                                                 */
 /*                                                                         */
 /***************************************************************************/
@@ -19,7 +19,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#define CAENHVLIB_API 
+#define CAENHVLIB_API
 
 extern void Sleep(unsigned int x);
 
@@ -28,9 +28,9 @@ extern void Sleep(unsigned int x);
 #include <windows.h>
 
 #ifdef CAENHVLIB
-#define CAENHVLIB_API __declspec(dllexport) 
+#define CAENHVLIB_API __declspec(dllexport)
 #else
-#define CAENHVLIB_API 
+#define CAENHVLIB_API
 #endif
 
 #endif // UNIX
@@ -47,7 +47,7 @@ extern void Sleep(unsigned int x);
 
 
 #define MAX_CH_NAME                12
- 
+
 #define MAX_PARAM_NAME             10
 
 #define MAX_CRATES                             8
@@ -55,7 +55,7 @@ extern void Sleep(unsigned int x);
 #define MAX_BOARDS    ( MAX_SLOTS * MAX_CRATES )
 
 #define MAX_BOARD_NAME             12
-#define MAX_BOARD_DESC             28 
+#define MAX_BOARD_DESC             28
 #define SET                         1
 #define MON                         0
 #define SIGNED                      1
@@ -84,7 +84,7 @@ extern void Sleep(unsigned int x);
 #define PARAM_UN_SECOND             8
 #define PARAM_UN_RPM                9             // Rel. 1.4
 #define PARAM_UN_COUNT             10             // Rel. 2.6
-#define PARAM_UN_BIT               11	
+#define PARAM_UN_BIT               11
 #define PARAM_UN_APS               12
 
 #define SYSPROP_TYPE_STR            0
@@ -107,17 +107,17 @@ extern void Sleep(unsigned int x);
 #define MAXLINE						0x1000
 #define MAX_AVAILABLE_DEVICE		100
 
-/*-----------------------------------------------------------------------------                                                                             
-                             ERROR    CODES                                 
-                                                                             
-  Their meaning is the next:                                                 
-   CODES                                                                     
-     0    Command wrapper correctly executed                                 
-     1    Error of operatived system                                         
-     2    Write error in communication channel                               
-     3    Read error in communication channel                                
-     4    Time out in server communication                                   
-     5    Command Front End application is down                              
+/*-----------------------------------------------------------------------------
+                             ERROR    CODES
+
+  Their meaning is the next:
+   CODES
+     0    Command wrapper correctly executed
+     1    Error of operatived system
+     2    Write error in communication channel
+     3    Read error in communication channel
+     4    Time out in server communication
+     5    Command Front End application is down
      6    Communication with system not yet connected by a Login command
 	 7    Communication with a not present board/slot
      8	  Communication with RS232 not yet implemented
@@ -143,10 +143,10 @@ extern void Sleep(unsigned int x);
 	 0x1001 Device already connected
 	 0x1002 Device not connected
 	 0x1003 Operating system error
-	 0x1004 Login failed 
+	 0x1004 Login failed
 	 0x1005 Logout failed
 	 0x1006 Link type not supported
-	 0x1007 Login failed for username/password ( SY4527 / SY5527 )    	 
+	 0x1007 Login failed for username/password ( SY4527 / SY5527 )
  -----------------------------------------------------------------------------*/
 #define CAENHV_OK                   0
 #define CAENHV_SYSERR               1
@@ -219,7 +219,7 @@ typedef enum {
 }CAENHV_ID_TYPE_t;
 
 // Rel. 3.00
-typedef struct {    
+typedef struct {
 	char	Type;
 	char	ItemID[64];
 	char	Lvalue[4];
@@ -272,54 +272,54 @@ CAENHVLIB_API CAENHVRESULT CAENHV_InitSystem(CAENHV_SYSTEM_TYPE_t system, int Li
 
 CAENHVLIB_API CAENHVRESULT  CAENHV_DeinitSystem(int handle);
 
-CAENHVLIB_API CAENHVRESULT CAENHV_GetCrateMap(int handle,	
+CAENHVLIB_API CAENHVRESULT CAENHV_GetCrateMap(int handle,
  unsigned short *NrOfSlot, unsigned short **NrofChList, char **ModelList, char **DescriptionList,
  unsigned short **SerNumList, unsigned char **FmwRelMinList, unsigned char **FmwRelMaxList);
- 
-CAENHVLIB_API CAENHVRESULT  CAENHV_GetSysPropList(int handle, 
+
+CAENHVLIB_API CAENHVRESULT  CAENHV_GetSysPropList(int handle,
  unsigned short *NumProp, char **PropNameList);
- 
-CAENHVLIB_API CAENHVRESULT  CAENHV_GetSysPropInfo(int handle, 
+
+CAENHVLIB_API CAENHVRESULT  CAENHV_GetSysPropInfo(int handle,
  const char *PropName, unsigned *PropMode, unsigned *PropType);
 
-CAENHVLIB_API CAENHVRESULT  CAENHV_GetSysProp(int handle, 
+CAENHVLIB_API CAENHVRESULT  CAENHV_GetSysProp(int handle,
  const char *PropName, void *Result);
 
-CAENHVLIB_API CAENHVRESULT  CAENHV_SetSysProp(int handle, 
- const char	*PropName, void *Set); 
+CAENHVLIB_API CAENHVRESULT  CAENHV_SetSysProp(int handle,
+ const char	*PropName, void *Set);
 
-CAENHVLIB_API CAENHVRESULT  CAENHV_GetBdParam(int handle, 
+CAENHVLIB_API CAENHVRESULT  CAENHV_GetBdParam(int handle,
  unsigned short slotNum, const unsigned short *slotList, const char *ParName, void *ParValList);
- 
-CAENHVLIB_API CAENHVRESULT  CAENHV_SetBdParam(int handle, 
+
+CAENHVLIB_API CAENHVRESULT  CAENHV_SetBdParam(int handle,
  unsigned short slotNum, const unsigned short *slotList, const char *ParName, void *ParValue);
- 
-CAENHVLIB_API CAENHVRESULT  CAENHV_GetBdParamProp(int handle, 
+
+CAENHVLIB_API CAENHVRESULT  CAENHV_GetBdParamProp(int handle,
  unsigned short slot, const char *ParName, const char *PropName, void *retval);
 
-CAENHVLIB_API CAENHVRESULT  CAENHV_GetBdParamInfo(int handle, 
+CAENHVLIB_API CAENHVRESULT  CAENHV_GetBdParamInfo(int handle,
  unsigned short slot, char **ParNameList);
 
-CAENHVLIB_API CAENHVRESULT  CAENHV_TestBdPresence(int handle, 
- unsigned short slot, unsigned short *NrofCh, char **Model, char **Description, unsigned short *SerNum, 
+CAENHVLIB_API CAENHVRESULT  CAENHV_TestBdPresence(int handle,
+ unsigned short slot, unsigned short *NrofCh, char **Model, char **Description, unsigned short *SerNum,
  unsigned char *FmwRelMin, unsigned char *FmwRelMax);
- 
-CAENHVLIB_API CAENHVRESULT  CAENHV_GetChParamProp(int handle, 
+
+CAENHVLIB_API CAENHVRESULT  CAENHV_GetChParamProp(int handle,
  unsigned short slot, unsigned short Ch, const char *ParName, const char *PropName, void *retval);
- 
-CAENHVLIB_API CAENHVRESULT CAENHV_GetChParamInfo(int handle, unsigned short slot, unsigned short Ch, 
+
+CAENHVLIB_API CAENHVRESULT CAENHV_GetChParamInfo(int handle, unsigned short slot, unsigned short Ch,
 												char **ParNameList, int *ParNumber);
 
-CAENHVLIB_API CAENHVRESULT  CAENHV_GetChName(int handle, unsigned short slot, 
+CAENHVLIB_API CAENHVRESULT  CAENHV_GetChName(int handle, unsigned short slot,
  unsigned short ChNum, const unsigned short *ChList, char (*ChNameList)[MAX_CH_NAME]);
 
-CAENHVLIB_API CAENHVRESULT  CAENHV_SetChName(int handle, unsigned short slot, 
+CAENHVLIB_API CAENHVRESULT  CAENHV_SetChName(int handle, unsigned short slot,
  unsigned short ChNum, const unsigned short *ChList, const char *ChName);
 
-CAENHVLIB_API CAENHVRESULT  CAENHV_GetChParam(int handle, unsigned short slot, 
+CAENHVLIB_API CAENHVRESULT  CAENHV_GetChParam(int handle, unsigned short slot,
  const char *ParName, unsigned short ChNum, const unsigned short *ChList, void *ParValList);
- 
-CAENHVLIB_API CAENHVRESULT  CAENHV_SetChParam(int handle, unsigned short slot, 
+
+CAENHVLIB_API CAENHVRESULT  CAENHV_SetChParam(int handle, unsigned short slot,
  const char *ParName, unsigned short ChNum, const unsigned short *ChList, void *ParValue);
 
 CAENHVLIB_API CAENHVRESULT  CAENHV_GetExecCommList(int handle,
@@ -327,36 +327,36 @@ CAENHVLIB_API CAENHVRESULT  CAENHV_GetExecCommList(int handle,
 
 CAENHVLIB_API CAENHVRESULT  CAENHV_ExecComm(int handle, const char *CommName);
 
-CAENHVLIB_API CAENHVRESULT CAENHV_SubscribeSystemParams(int handle, short Port, const char *paramNameList, 
+CAENHVLIB_API CAENHVRESULT CAENHV_SubscribeSystemParams(int handle, short Port, const char *paramNameList,
 														unsigned int paramNum ,char *listOfResultCodes);
 
-CAENHVLIB_API CAENHVRESULT CAENHV_SubscribeBoardParams(int handle, short Port, const unsigned short slotIndex, 
+CAENHVLIB_API CAENHVRESULT CAENHV_SubscribeBoardParams(int handle, short Port, const unsigned short slotIndex,
 														const char *paramNameList, unsigned int paramNum ,char *listOfResultCodes);
 
 CAENHVLIB_API CAENHVRESULT CAENHV_SubscribeChannelParams(int handle, short Port, const unsigned short slotIndex,
-														const unsigned short chanIndex, const char *paramNameList, 
+														const unsigned short chanIndex, const char *paramNameList,
 														unsigned int paramNum ,char *listOfResultCodes);
 
-CAENHVLIB_API CAENHVRESULT CAENHV_UnSubscribeSystemParams(int handle, short Port, const char *paramNameList, 
+CAENHVLIB_API CAENHVRESULT CAENHV_UnSubscribeSystemParams(int handle, short Port, const char *paramNameList,
 														unsigned int paramNum ,char *listOfResultCodes);
 
-CAENHVLIB_API CAENHVRESULT CAENHV_UnSubscribeBoardParams(int handle, short Port, const unsigned short slotIndex, 
+CAENHVLIB_API CAENHVRESULT CAENHV_UnSubscribeBoardParams(int handle, short Port, const unsigned short slotIndex,
 														const char *paramNameList, unsigned int paramNum ,char *listOfResultCodes);
 
 CAENHVLIB_API CAENHVRESULT CAENHV_UnSubscribeChannelParams(int handle, short Port, const unsigned short slotIndex,
-															const unsigned short chanIndex, const char *paramNameList, 
+															const unsigned short chanIndex, const char *paramNameList,
 															unsigned int paramNum ,char *listOfResultCodes);
 
 CAENHVLIB_API char *CAENHV_GetError(int handle);
 
 #ifdef MSYS
-CAENHVLIB_API CAENHVRESULT CAENHV_GetEventData(int sck, CAENHV_SYSTEMSTATUS_t *SysStatus, 
+CAENHVLIB_API CAENHVRESULT CAENHV_GetEventData(int sck, CAENHV_SYSTEMSTATUS_t *SysStatus,
                                                CAENHVEVENT_TYPE_t **EventData, unsigned int *DataNumber);
 #elif  LINUX
-CAENHVLIB_API CAENHVRESULT CAENHV_GetEventData(int sck, CAENHV_SYSTEMSTATUS_t *SysStatus, 
+CAENHVLIB_API CAENHVRESULT CAENHV_GetEventData(int sck, CAENHV_SYSTEMSTATUS_t *SysStatus,
                                                CAENHVEVENT_TYPE_t **EventData, unsigned int *DataNumber);
 #elif WIN32
-CAENHVLIB_API CAENHVRESULT CAENHV_GetEventData(SOCKET sck, CAENHV_SYSTEMSTATUS_t *SysStatus, 
+CAENHVLIB_API CAENHVRESULT CAENHV_GetEventData(SOCKET sck, CAENHV_SYSTEMSTATUS_t *SysStatus,
 												CAENHVEVENT_TYPE_t **EventData, unsigned int *DataNumber);
 
 #endif
